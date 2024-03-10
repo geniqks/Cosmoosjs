@@ -13,5 +13,8 @@
   "packageManager": "bun@1.0.25",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "@types/bun": "^1.0.8"
+  }
 }

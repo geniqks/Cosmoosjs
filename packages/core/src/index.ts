@@ -1,4 +1,4 @@
 
-export default function salutTest() {
-  console.log('cc michel');
+export function salutTest() {
+  return 1;
 };

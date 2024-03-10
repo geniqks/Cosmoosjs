@@ -1,9 +1,9 @@
 {
   "name": "@cosmosjs/common",
   "module": "index.ts",
-  "type": "./src/module",
+  "type": "module",
   "dependencies": {
     "typescript": "latest",
-    "@cosmosjs/core": "workspace:*"
+    "@cosmosjs/core": "workspace:core"
   }
 }
