@@ -1,8 +1,7 @@
 {
   "name": "@cosmosjs/core",
-  "exports": {
-    ".": "./src/index.ts"
-  },
+  "module": "index.ts",
+  "type": "./src/module",
   "dependencies": {
     "typescript": "latest"
   }
