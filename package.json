@@ -8,17 +8,14 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
     "prettier": "^3.2.5",
     "turbo": "latest"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.11.0"
   },
-  "packageManager": "npm@10.0.0",
+  "packageManager": "bun@1.0.25",
   "workspaces": [
-    "apps/*",
     "packages/*"
   ]
 }
