@@ -16,10 +16,14 @@
   ],
   "devDependencies": {
     "@types/bun": "^1.0.8",
-    "@typescript-eslint/eslint-plugin": "^6.19.0",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.19.0",
-    "eslint": "^8.0.1",
-    "eslint-plugin-import": "^2.29.1"
+    "eslint": "^8.57.0",
+    "eslint-config-standard-with-typescript": "^43.0.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": "^5.4.2"
   },
   "dependencies": {
     "inversify": "^6.0.2",
