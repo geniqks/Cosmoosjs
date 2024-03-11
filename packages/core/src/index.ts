@@ -1,4 +1,3 @@
-
-export function salutTest() {
-  return 1;
+export function salutTest () {
+  return 1
 };
