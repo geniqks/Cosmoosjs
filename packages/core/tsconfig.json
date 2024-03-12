@@ -18,14 +18,13 @@
     "noFallthroughCasesInSwitch": true,
     "outDir": "./dist",
     "baseUrl": ".",
-    "paths": {},
+    "paths": {
+      "@cosmosjs/core": ["./src"],
+    },
     "types": [
       "bun",
       "node",
       "reflect-metadata"
     ],
   },
-  "include": [
-    "src",
-  ],
 }
