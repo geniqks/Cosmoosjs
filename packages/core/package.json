@@ -1,6 +1,5 @@
 {
   "name": "@cosmosjs/core",
-  "module": "index.ts",
   "exports": {
     ".": "./index.ts"
   },

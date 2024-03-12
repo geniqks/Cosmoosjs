@@ -1,6 +1,5 @@
 {
   "name": "@cosmosjs/common",
-  "module": "index.ts",
   "type": "module",
   "dependencies": {
     "typescript": "latest",
