@@ -1,2 +1,2 @@
-export { IocContainer } from './ioc-container';
+export { IocService } from './ioc.service';
 
