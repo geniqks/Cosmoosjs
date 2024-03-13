@@ -1,7 +1,10 @@
 {
   "name": "@cosmosjs/core",
   "exports": {
-    ".": "./index.ts"
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "bun build ./src/index.ts --target bun --minify --outdir ./dist"
   },
   "dependencies": {
     "typescript": "latest"
