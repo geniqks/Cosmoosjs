@@ -1,8 +1,6 @@
-import { injectable } from "inversify";
 import { CosmosOptions } from "./interfaces";
 
-@injectable()
-export class CosmosFactory {
+class CosmosFactory {
   public async create(options: CosmosOptions): Promise<any> {
 
   }
