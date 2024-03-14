@@ -12,7 +12,8 @@
   },
   "packageManager": "bun@1.0.25",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "sample/*"
   ],
   "devDependencies": {
     "@types/bun": "^1.0.8",
@@ -26,7 +27,9 @@
     "typescript": "^5.4.2"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "inversify": "^6.0.2",
-    "reflect-metadata": "^0.2.1"
+    "reflect-metadata": "^0.2.1",
+    "zod": "^3.22.4"
   }
 }
