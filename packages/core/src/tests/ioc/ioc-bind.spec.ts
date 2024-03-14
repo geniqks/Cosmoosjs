@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { beforeAll, describe, expect, it } from 'bun:test';
 import { Container } from 'inversify';
 import { IocTestClass } from './ioc-bind-class';
