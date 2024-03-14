@@ -2,6 +2,12 @@
   "name": "hono-hello-world",
   "module": "index.ts",
   "type": "module",
+  "scripts": {
+    "dev": "bun src/index.ts"
+  },
+  "dependencies": {
+    "@cosmosjs/core": "workspace:core"
+  },
   "devDependencies": {
     "@types/bun": "latest"
   },
