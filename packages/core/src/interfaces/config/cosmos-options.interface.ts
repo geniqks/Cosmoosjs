@@ -1,6 +1,13 @@
 export interface CosmosOptions {
   /**
    * Path to ioc configuration
+   * @default start/ioc-loader.ts
    */
-  iocFilePath: string,
+  iocLoaderPath: string,
+
+  /**
+   * Path to ioc configuration
+   * @default start/env.ts
+   */
+  envLoaderPath: string,
 }
