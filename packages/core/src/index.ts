@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 
-export { CosmosFactory } from "./cosmos-factory";
+export { CosmosFactoryStatic } from "./cosmos-factory";
+export * from './env';
 export * from "./interfaces";
 export * from './ioc';
 
