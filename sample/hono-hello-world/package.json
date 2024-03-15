@@ -6,7 +6,8 @@
     "dev": "bun src/index.ts"
   },
   "dependencies": {
-    "@cosmosjs/core": "workspace:core"
+    "@cosmosjs/core": "workspace:*",
+    "@cosmosjs/hono-openapi": "workspace:*"
   },
   "devDependencies": {
     "@types/bun": "latest"

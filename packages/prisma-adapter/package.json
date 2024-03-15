@@ -1,0 +1,8 @@
+{
+  "name": "@cosmosjs/prisma",
+  "type": "module",
+  "dependencies": {
+    "typescript": "latest",
+    "@cosmosjs/core": "workspace:core"
+  }
+}

@@ -1,1 +1,1 @@
-export * from './config/cosmos-options.interface';
+export * from './start/bootstrap-config.interface';

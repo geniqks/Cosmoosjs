@@ -1,0 +1,13 @@
+{
+  "name": "@cosmosjs/hono-openapi",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "bun build ./src/index.ts --target bun --minify --outdir ./dist"
+  },
+  "dependencies": {
+    "typescript": "latest",
+    "@cosmosjs/core": "workspace:core"
+  }
+}
