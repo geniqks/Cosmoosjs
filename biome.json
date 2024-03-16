@@ -3,6 +3,9 @@
 	"organizeImports": {
 		"enabled": true
 	},
+	"files": {
+		"ignore": ["**/*/dist"]
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
@@ -11,6 +14,9 @@
 				"noExplicitAny": "off"
 			}
 		}
+	},
+	"formatter": {
+		"lineWidth": 140
 	},
 	"javascript": {
 		"formatter": {

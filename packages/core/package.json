@@ -4,7 +4,9 @@
 		".": "./src/index.ts"
 	},
 	"scripts": {
-		"build": "bun build ./src/index.ts --target bun --minify --outdir ./dist"
+		"build": "bun build ./src/index.ts --target bun --minify --outdir ./dist",
+		"test": "bun test",
+		"lint": "bunx biome lint ./src"
 	},
 	"dependencies": {
 		"inversify": "^6.0.2",
