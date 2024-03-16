@@ -1,9 +1,5 @@
 import { defineConfigAndBootstrapApp } from "@cosmosjs/core";
 import dotenv from 'dotenv'
-import { Validator } from "./app/validator";
-import * as t from '@cosmosjs/hono-openapi';
-import type iocLoader from "./start/ioc-loader";
-
 dotenv.config()
 
 defineConfigAndBootstrapApp({
@@ -11,7 +7,7 @@ defineConfigAndBootstrapApp({
     server: () => import('@cosmosjs/hono-openapi'),
   },
   loaders: {
-    env: () => import('./start/env'),
-    ioc: () => import('./start/ioc-loader'),
+    env: () => import('@app/start/env'),
+    ioc: () => import('@app/start/ioc-loader'),
   }
 })
