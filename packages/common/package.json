@@ -1,8 +1,8 @@
 {
-  "name": "@cosmosjs/common",
-  "type": "module",
-  "dependencies": {
-    "typescript": "latest",
-    "@cosmosjs/core": "workspace:core"
-  }
+	"name": "@cosmosjs/common",
+	"type": "module",
+	"dependencies": {
+		"typescript": "^5.4.2",
+		"@cosmosjs/core": "workspace:core"
+	}
 }

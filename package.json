@@ -1,33 +1,20 @@
 {
-  "name": "cosmosjs",
-  "private": true,
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "engines": {
-    "node": ">=20.11.0"
-  },
-  "packageManager": "bun@1.0.25",
-  "workspaces": [
-    "packages/*",
-    "sample/*"
-  ],
-  "devDependencies": {
-    "@biomejs/biome": "1.6.1",
-    "@types/bun": "^1.0.8",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
-    "@typescript-eslint/parser": "^6.19.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-import": "^2.29.1",
-    "typescript": "^5.4.2"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "inversify": "^6.0.2",
-    "reflect-metadata": "^0.2.1",
-    "zod": "^3.22.4"
-  }
+	"name": "cosmosjs",
+	"private": true,
+	"scripts": {
+		"build": "turbo build",
+		"lint": "bunx biome check ./packages",
+		"lint:safe": "bunx biome check --apply ./packages",
+		"lint:unsafe": "bunx biome check --apply-unsafe  ./packages"
+	},
+	"engines": {
+		"node": ">=20.11.0"
+	},
+	"packageManager": "bun@1.0.25",
+	"workspaces": ["packages/*", "sample/*"],
+	"devDependencies": {
+		"@biomejs/biome": "1.6.1",
+		"@types/bun": "^1.0.8",
+		"typescript": "^5.4.2"
+	}
 }
