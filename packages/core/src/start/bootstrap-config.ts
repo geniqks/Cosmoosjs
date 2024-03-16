@@ -6,9 +6,7 @@ async function loadModule(importedModule: any) {
 		const module = await importedModule();
 		return module.default;
 	} catch (error: any) {
-		throw new Error(
-			`Error loading module ${importedModule}: ${error?.message}`,
-		);
+		throw new Error(`Error loading module ${importedModule}: ${error?.message}`);
 	}
 }
 
