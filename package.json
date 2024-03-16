@@ -2,8 +2,8 @@
 	"name": "cosmosjs",
 	"private": true,
 	"scripts": {
-		"test": "turbo run test",
-		"build": "turbo run build",
+		"test": "bunx turbo run test",
+		"build": "bunx turbo run build",
 		"lint": "bunx biome check ./packages",
 		"lint:safe": "bunx biome check --apply ./packages",
 		"lint:unsafe": "bunx biome check --apply-unsafe  ./packages"
