@@ -1,15 +1,15 @@
 import { Container } from "inversify";
 import { bindToContainers } from "./bind-containers";
 
-// TODO: add loader from configuration to load user binding
+// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
 export class IocContainer {
   private static _container: Container
 
   public static get container(): Container {
-    if (!this._container) {
-      this._container = new Container();
-      bindToContainers(this._container);
+    if (!IocContainer._container) {
+      IocContainer._container = new Container();
+      bindToContainers(IocContainer._container);
     }
-    return this._container;
+    return IocContainer._container;
   }
 }
