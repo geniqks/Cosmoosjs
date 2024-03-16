@@ -8,6 +8,8 @@
 		"moduleDetection": "force",
 		"strict": true,
 		"noUncheckedIndexedAccess": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
 		"moduleResolution": "Bundler",
 		"module": "ES2022",
 		"noEmit": true,
@@ -22,7 +24,7 @@
 			"@tests/*": ["./src/tests/*"],
 			"@utils/*": ["./src/utils/*"]
 		},
-		"types": ["bun", "node", "reflect-metadata"]
+		"types": ["bun", "node"]
 	},
 	"include": ["src"],
 	"exclude": ["node_modules"]

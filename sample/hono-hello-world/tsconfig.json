@@ -1,27 +1,21 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
-    "target": "ESNext",
-    "module": "ESNext",
+    "lib": ["ES2022"],
+    "target": "ES2022",
+    "module": "ES2022",
     "moduleDetection": "force",
-    "jsx": "react-jsx",
-    "allowJs": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "noEmit": true,
-
-    /* Linting */
+		"moduleResolution": "bundler",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "skipLibCheck": true,
     "strict": true,
-    "types": ["reflect-metadata"],
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
     "paths": {
       "@app/*": ["./src/*"],
       "@start/*": ["./src/start/*"]
-    }
-  }
+    },
+    "types": ["bun", "reflect-metadata"],
+  },
 }

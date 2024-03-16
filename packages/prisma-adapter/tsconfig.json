@@ -16,6 +16,8 @@
 		"skipLibCheck": true,
 		"strict": true,
 		"target": "ES2022",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
 		"types": ["bun"]
 	}
 }
