@@ -7,7 +7,7 @@ defineConfigAndBootstrapApp({
     server: () => import('@cosmosjs/hono-openapi'),
   },
   loaders: {
-    env: () => import('@app/start/env'),
-    ioc: () => import('@app/start/ioc-loader'),
+    env: () => import('@start/env'),
+    ioc: () => import('@start/ioc-loader'),
   }
 })
