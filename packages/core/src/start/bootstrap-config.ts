@@ -1,4 +1,4 @@
-import { Env, IocContainer } from "src";
+import { Env, IocContainer } from 'src';
 import type { IBootstrapConfig } from '../interfaces';
 
 async function loadModule(importedModule: any) {

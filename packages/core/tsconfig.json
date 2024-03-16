@@ -1,37 +1,29 @@
 {
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "ES2022",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "moduleResolution": "Bundler",
-    "module": "ES2022",
-    "noEmit": true,
-    "lib": ["ES2022"],
-    "outDir": ".",
-    "baseUrl": ".",
-    "paths": {
-      "@config/*": ["./src/config/*"],
-      "@interfaces/*": ["./src/interfaces/*"],
-      "@ioc/*": ["./src/ioc/*"],
-      "@services/*": ["./src/services/*"],
-      "@tests/*": ["./src/tests/*"],
-      "@utils/*": ["./src/utils/*"],
-    },
-    "types": [
-      "bun",
-      "node",
-      "reflect-metadata"
-    ],
-  },
-  "include": [
-    "src"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+	"compilerOptions": {
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"target": "ES2022",
+		"resolveJsonModule": true,
+		"isolatedModules": true,
+		"moduleDetection": "force",
+		"strict": true,
+		"noUncheckedIndexedAccess": true,
+		"moduleResolution": "Bundler",
+		"module": "ES2022",
+		"noEmit": true,
+		"lib": ["ES2022"],
+		"outDir": ".",
+		"baseUrl": ".",
+		"paths": {
+			"@config/*": ["./src/config/*"],
+			"@interfaces/*": ["./src/interfaces/*"],
+			"@ioc/*": ["./src/ioc/*"],
+			"@services/*": ["./src/services/*"],
+			"@tests/*": ["./src/tests/*"],
+			"@utils/*": ["./src/utils/*"]
+		},
+		"types": ["bun", "node", "reflect-metadata"]
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
 }
