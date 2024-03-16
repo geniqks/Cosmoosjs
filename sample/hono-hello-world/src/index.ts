@@ -1,5 +1,4 @@
 import { defineConfigAndBootstrapApp } from "@cosmosjs/core";
-import * as path from 'path';
 import dotenv from 'dotenv'
 import { Validator } from "./app/validator";
 import * as t from '@cosmosjs/hono-openapi';
