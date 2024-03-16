@@ -1,37 +1,34 @@
 export interface IBootstrapConfig {
 	/**
-	 * Les adapters permette de choisir les outils que vous utiliserez durant le développement
-	 * de l'application
+	 * Adapters let you choose the tools you'll use during application development
 	 */
 	adapters: {
 		/**
-		 * Serveur HTTP qui sera utilisé
+		 * HTTP server to be used
 		 */
 		server: any;
 		/**
-		 * Orm qui sera utilisé
+		 * Orm to be used
 		 */
 		orm?: any;
 	};
 
 	/**
-	 * Les Loaders sont les fichiers qui doivent être injecté au lancement de l'application
-	 * pour que cette dernière puisse effectuer des validation en amont
+	 * Loaders are files that must be injected when the application is launched so that it can perform upstream validation.
 	 */
 	loaders: {
 		/**
-		 * Injection de la config env afin de valider votre environnement
+		 * Inject the env config to validate your environment
 		 */
 		env: any;
 		/**
-		 * Injection de toutes les class dans notre librairie ioc "Inversify"
+		 * Inject all classes into our ioc library "Inversify"
 		 */
 		ioc: any;
 	};
 
 	/**
-	 *  Vous pouvez injecter des providers custom afin d'effectuer des actions non natif
-	 *  au framework
+	 *  You can inject custom providers to perform actions not native to the framework
 	 */
 	providers?: any[];
 }
