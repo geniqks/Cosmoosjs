@@ -6,10 +6,11 @@
 		"dev": "bun run --hot src/index.ts"
 	},
 	"dependencies": {
+		"@cosmosjs/core": "workspace:*",
+		"@cosmosjs/hono-openapi": "workspace:*",
 		"dotenv": "^16.4.5",
 		"inversify": "^6.0.2",
-		"@cosmosjs/core": "workspace:*",
-		"@cosmosjs/hono-openapi": "workspace:*"
+		"reflect-metadata": "^0.2.1"
 	},
 	"devDependencies": {
 		"@types/bun": "^1.0.8"
