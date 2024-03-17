@@ -1,4 +1,4 @@
-import { Env } from "@cosmosjs/core";
+import { ENV_STATE_ENUM, Env } from "@cosmosjs/core";
 
 /**
  * This file is used to validate environment variables
@@ -11,5 +11,6 @@ import { Env } from "@cosmosjs/core";
  * @link https://zod.dev/
  */ 
 export default {
-  PORT: Env.validator.string().transform(Number)
+  PORT: Env.validator.string().transform(Number),
+  ENV: Env.validator.nativeEnum(ENV_STATE_ENUM)
 }
