@@ -11,7 +11,17 @@
 		"rules": {
 			"recommended": true,
 			"suspicious": {
-				"noExplicitAny": "off"
+				"noExplicitAny": "off",
+				"noConfusingVoidType": "off",
+				"noImportAssign": "error"
+			},
+			"complexity": {
+				"noUselessConstructor": "error",
+				"noStaticOnlyClass": "off",
+				"noBannedTypes": "off"
+			},
+			"style": {
+				"noUselessElse": "off"
 			}
 		}
 	},
