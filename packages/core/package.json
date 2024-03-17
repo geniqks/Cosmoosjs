@@ -1,5 +1,6 @@
 {
 	"name": "@cosmosjs/core",
+	"version": "0.1",
 	"exports": {
 		".": "./src/index.ts"
 	},
