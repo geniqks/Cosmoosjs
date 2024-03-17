@@ -6,11 +6,14 @@ export interface IBootstrapConfig {
 		/**
 		 * HTTP server to be used
 		 */
-		server: any;
+		server: {
+			port: number;
+			provider: () => Promise<any>;
+		};
 		/**
 		 * Orm to be used
 		 */
-		orm?: any;
+		orm?: () => Promise<any>;
 	};
 
 	/**
@@ -20,15 +23,21 @@ export interface IBootstrapConfig {
 		/**
 		 * Inject the env config to validate your environment
 		 */
-		env: any;
+		env: () => Promise<any>;
 		/**
 		 * Inject all classes into our ioc library "Inversify"
 		 */
-		ioc: any;
+		ioc: () => Promise<any>;
 	};
 
 	/**
 	 *  You can inject custom providers to perform actions not native to the framework
 	 */
-	providers?: any[];
+	providers?: () => Promise<any>[];
+
+	/**
+	 * The entry point to your application
+	 * By default, if you are using an http server, this will be the controllers folder.
+	 */
+	entrypoint?: () => Promise<any>;
 }
