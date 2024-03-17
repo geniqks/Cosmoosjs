@@ -1,12 +1,10 @@
-import { OpenAPIHono } from '@hono/zod-openapi';
 import type { Container } from 'inversify';
 import { bindToContainers } from '../ioc';
-import { Server } from '../server';
-
+import type { Server } from '../server';
 class HonoAdapter {
 	public listen(port: number, container: Container) {
 		bindToContainers(container);
-		const app = container.get(Server);
+		const app = container.get<Server>('Server');
 
 		return {
 			port,

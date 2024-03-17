@@ -1,4 +1,4 @@
-import { Env, IocContainer } from 'src';
+import { type Env, IocContainer } from 'src';
 import type { IBootstrapConfig } from '../interfaces';
 
 async function loadModule(importedModule: any) {
@@ -14,9 +14,9 @@ export async function defineConfigAndBootstrapApp(config: IBootstrapConfig): Pro
 	port: number;
 	fetch: any;
 } | void> {
-	const envLoader = await loadModule(config.loaders.env);
 	const iocBindingLoader = await loadModule(config.loaders.ioc);
-	const env = IocContainer.container.get(Env);
+	const envLoader = await loadModule(config.loaders.env);
+	const env = IocContainer.container.get<Env>('Env');
 	env.process(envLoader);
 	iocBindingLoader(IocContainer.container);
 
@@ -27,7 +27,6 @@ export async function defineConfigAndBootstrapApp(config: IBootstrapConfig): Pro
 
 	if (config.adapters?.server) {
 		const server = await config.adapters?.server.provider();
-		console.log(server);
 		return server.HonoFactory.listen(config.adapters?.server.port, IocContainer.container);
 	}
 }

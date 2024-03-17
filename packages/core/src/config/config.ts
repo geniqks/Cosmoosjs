@@ -1,10 +1,8 @@
-import type { LoggerService } from '@services/logger.service';
-import { injectable } from 'inversify';
-import { Env } from 'src';
-
+import { inject, injectable } from 'inversify';
+import { Env, type LoggerService } from 'src';
 @injectable()
 export class CosmosConfig {
-	constructor(private readonly loggerService: LoggerService) {}
+	public constructor(@inject('LoggerService') private readonly loggerService: LoggerService) {}
 
 	/**
 	 * Get env variables
@@ -35,7 +33,7 @@ export class CosmosConfig {
 		if (envKey) {
 			return envKey;
 		} else {
-			void this.loggerService.pino.warn(`${key} does not exist in you'r environnement`);
+			this.loggerService.pino.warn(`${key} does not exist in you'r environnement`);
 		}
 	}
 }

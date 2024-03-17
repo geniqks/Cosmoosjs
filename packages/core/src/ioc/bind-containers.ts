@@ -6,10 +6,11 @@ import { AdapterService } from 'src/adapters/adapter.service';
 
 /**
  * Bind all classes to container
+ * TODO: find a way to use toSelf() make auto injection in class constructor
  */
 export const bindToContainers = (container: Container): void => {
-	container.bind(Env).toSelf().inSingletonScope();
-	container.bind(CosmosConfig).toSelf().inSingletonScope();
-	container.bind(AdapterService).toSelf().inRequestScope();
-	container.bind(LoggerService).toSelf().inSingletonScope();
+	container.bind('AdapterService').to(AdapterService).inRequestScope();
+	container.bind('CosmosConfig').to(CosmosConfig).inSingletonScope();
+	container.bind('Env').to(Env).inSingletonScope();
+	container.bind('LoggerService').to(LoggerService).inSingletonScope();
 };

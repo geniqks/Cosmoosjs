@@ -5,5 +5,5 @@ import { Server } from '../server';
  * Bind all classes to container
  */
 export const bindToContainers = (container: Container): void => {
-	container.bind(Server).toSelf().inSingletonScope();
+	container.bind('Server').to(Server).inSingletonScope();
 };
