@@ -13,7 +13,7 @@
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
     "paths": {
-      "@app/*": ["./src/*"],
+      "@app/*": ["./src/app/*"],
       "@start/*": ["./src/start/*"]
     },
     "types": ["bun", "reflect-metadata"],

@@ -3,7 +3,7 @@
 	"module": "index.ts",
 	"type": "module",
 	"scripts": {
-		"dev": "bun src/index.ts"
+		"dev": "bun run --hot src/index.ts"
 	},
 	"dependencies": {
 		"dotenv": "^16.4.5",
