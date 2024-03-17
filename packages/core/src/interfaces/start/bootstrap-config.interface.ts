@@ -37,7 +37,6 @@ export interface IBootstrapConfig {
 
 	/**
 	 * The entry point to your application
-	 * By default, if you are using an http server, this will be the controllers folder.
 	 */
 	entrypoint?: () => Promise<any>;
 }
