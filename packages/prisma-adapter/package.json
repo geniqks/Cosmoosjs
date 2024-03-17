@@ -1,5 +1,6 @@
 {
 	"name": "@cosmosjs/prisma",
+	"version": "0.1",
 	"type": "module",
 	"dependencies": {
 		"typescript": "^5.4.2",
