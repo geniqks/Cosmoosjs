@@ -1,1 +1,1 @@
-export { bindToContainers } from './bind-container'
+export { bindToContainers } from './bind-container';

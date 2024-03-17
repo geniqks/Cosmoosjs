@@ -5,8 +5,8 @@ import { Server } from '../server';
 
 class HonoAdapter {
 	public listen(port: number, container: Container) {
-    bindToContainers(container);
-    const app = container.get(Server);
+		bindToContainers(container);
+		const app = container.get(Server);
 
 		return {
 			port,
