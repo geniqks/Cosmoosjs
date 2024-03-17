@@ -1,8 +1,10 @@
 import { Container } from 'inversify';
 import { bindToContainers } from './bind-containers';
 
-// biome-ignore lint/complexity/noStaticOnlyClass: <explanation>
 export class IocContainer {
+	/**
+	 * Access to inversify container
+	 */
 	private static _container: Container;
 
 	public static get container(): Container {
