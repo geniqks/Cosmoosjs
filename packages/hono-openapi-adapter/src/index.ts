@@ -1,3 +1,2 @@
-import { AdapterAbstract } from '@cosmosjs/core';
-
-export class HonoOpenApiAdapter extends AdapterAbstract {}
+export { HonoFactory } from './start/hono-adapter';
+export * from './server';

@@ -1,13 +1,19 @@
 {
 	"name": "@cosmosjs/hono-openapi",
+	"version": "0.1",
 	"exports": {
 		".": "./src/index.ts"
 	},
 	"scripts": {
-		"build": "bun build ./src/index.ts --target bun --minify --outdir ./dist"
+		"dev": "bun run --hot src/index.ts"
 	},
 	"dependencies": {
-		"typescript": "^5.4.2",
-		"@cosmosjs/core": "workspace:core"
+		"@hono/sentry": "^1.0.0",
+		"hono": "^4.1.1",
+		"http-status-codes": "^2.3.0"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.0.8",
+		"@hono/swagger-ui": "^0.2.1"
 	}
 }
