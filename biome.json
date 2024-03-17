@@ -22,6 +22,9 @@
 			},
 			"style": {
 				"noUselessElse": "off"
+			},
+			"correctness": {
+				"noUnusedImports": "error"
 			}
 		}
 	},
@@ -31,6 +34,9 @@
 	"javascript": {
 		"formatter": {
 			"quoteStyle": "single"
+		},
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
 		}
 	}
 }
