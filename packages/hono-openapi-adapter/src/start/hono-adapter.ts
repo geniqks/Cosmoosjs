@@ -10,6 +10,8 @@ class HonoAdapter {
     Reflect.defineMetadata(SERVER, app, SERVER_TARGET);
     Reflect.defineMetadata(CONTAINER, container, SERVER_TARGET);
 
+    // TODO: add swagger / openApi
+
     return {
       port,
       fetch: app.hono.fetch,
