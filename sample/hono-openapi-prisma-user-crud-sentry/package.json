@@ -1,5 +1,5 @@
 {
-	"name": "hono-hello-world",
+	"name": "hono-openapi-prisma-user-crud-sentry",
 	"module": "index.ts",
 	"type": "module",
 	"scripts": {
