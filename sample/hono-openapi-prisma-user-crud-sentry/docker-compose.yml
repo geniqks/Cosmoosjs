@@ -1,17 +1,13 @@
 version: '3.1'
 
 services:
-
   db:
-    image: mysql
-    command: > 
-      --default-authentication-plugin=mysql_native_password
-      && --init-file /data/application/init.sql
+    image: mariadb
     restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: example
     volumes:
         - ./docker/volumes/mysql/init.sql:/data/application/init.sql
-    environment:
-      MYSQL_ROOT_PASSWORD: example
     ports:
       - 3306:3306
 
