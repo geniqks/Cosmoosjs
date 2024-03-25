@@ -1,5 +1,5 @@
 import { IocContainer, type LoggerService, defineConfigAndBootstrapApp } from '@cosmosjs/core';
-import { ConfigService } from '@cosmosjs/core';
+import type { ConfigService } from '@cosmosjs/core';
 import { serve } from 'bun';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -12,7 +12,7 @@ const boostrapApp = async () => {
   const config = await defineConfigAndBootstrapApp((config: ConfigService) => ({
     adapters: {
       server: {
-        port: 3005,
+        port: config.get<number>('PORT'),
         provider: () => import('@cosmosjs/hono-openapi'),
       },
     },
