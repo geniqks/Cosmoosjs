@@ -1,5 +1,5 @@
-import type { ConfigService } from '@config/config';
-import { type Env, IocContainer } from 'src';
+import { ConfigService } from '@config/config';
+import { Env, IocContainer } from 'src';
 import type { IBootstrapConfig } from '../interfaces';
 
 async function loadModule(importedModule: any) {
@@ -15,8 +15,8 @@ export async function defineConfigAndBootstrapApp(config: (injectedConfig: Confi
 	port: number;
 	fetch: any;
 } | void> {
-	const env = IocContainer.container.get<Env>('Env');
-	const configService = IocContainer.container.get<ConfigService>('ConfigService');
+	const env = IocContainer.container.get<Env>(Env);
+	const configService = IocContainer.container.get<ConfigService>(ConfigService);
 	const loadedConfig = config(configService);
 	const iocBindingLoader = await loadModule(loadedConfig.loaders.ioc);
 	const envLoader = await loadModule(loadedConfig.loaders.env);

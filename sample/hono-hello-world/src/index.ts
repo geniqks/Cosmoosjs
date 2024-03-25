@@ -1,4 +1,4 @@
-import { IocContainer, type LoggerService, defineConfigAndBootstrapApp } from '@cosmosjs/core';
+import { IocContainer, LoggerService, defineConfigAndBootstrapApp } from '@cosmosjs/core';
 import type { ConfigService } from '@cosmosjs/core';
 import { serve } from 'bun';
 import dotenv from 'dotenv';
@@ -27,7 +27,7 @@ const boostrapApp = async () => {
 };
 
 boostrapApp().then((httpConfig) => {
-  const logger = IocContainer.container.get<LoggerService>('LoggerService');
+  const logger = IocContainer.container.get(LoggerService);
   try {
     serve({
       async fetch(req) {

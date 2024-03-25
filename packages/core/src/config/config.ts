@@ -1,8 +1,9 @@
 import { inject, injectable } from 'inversify';
-import { Env, type LoggerService } from 'src';
+import { Env } from 'src/env/env';
+
 @injectable()
 export class ConfigService {
-	public constructor(@inject('LoggerService') private readonly loggerService: LoggerService) {}
+	public constructor(@inject(Env) private readonly env: Env) {}
 
 	/**
 	 * Get env variables
@@ -29,11 +30,11 @@ export class ConfigService {
 	 * Validate if env key exist and then return it
 	 */
 	public getEnvKey(key: string) {
-		const envKey = Env.EnvKeys[key];
+		const envKey = this.env.envKeys[key];
 		if (envKey) {
 			return envKey;
 		} else {
-			this.loggerService.pino.warn(`${key} does not exist in you'r environnement`);
+			console.warn(`${key} does not exist in you'r environnement`);
 		}
 	}
 }
