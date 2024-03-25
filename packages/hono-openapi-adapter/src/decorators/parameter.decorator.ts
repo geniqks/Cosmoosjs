@@ -9,7 +9,7 @@ import type { GuardsType } from 'src/types/guards';
 
 function controllerHandler(options: RouteParameters, requestType: RequestMethod, target: any, guards: GuardsType[], thisArg: any) {
   const server: Server = Reflect.getMetadata(SERVER, SERVER_TARGET);
-  console.log(server);
+
   // Define route
   const { ...routeMetadata } = options;
   const finalRouteMetadata = Object.assign(routeMetadata, {

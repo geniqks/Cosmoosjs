@@ -10,7 +10,5 @@ export default () => {
 export class Test {
   constructor(@inject(Validator) private readonly validator: Validator) { }
 
-  public validate() {
-    console.log(this.validator);
-  }
+  public validate() { }
 }
