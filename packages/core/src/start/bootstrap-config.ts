@@ -3,6 +3,7 @@ import { Env, IocContainer } from 'src';
 import type { IBootstrapConfig } from '../interfaces';
 
 //TODO: add app exception handler
+// TODO: refacto this file later (used in this state for developpement purpose)
 async function loadModule(importedModule: any) {
   try {
     const module = await importedModule();
@@ -11,7 +12,6 @@ async function loadModule(importedModule: any) {
     throw new Error(`Error loading module ${importedModule}: ${error?.message}`);
   }
 }
-// TODO: refacto this file later
 export async function defineConfigAndBootstrapApp(config: (injectedConfig: ConfigService) => IBootstrapConfig): Promise<{
   port: number;
   fetch: any;
