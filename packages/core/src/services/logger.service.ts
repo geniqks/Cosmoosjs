@@ -1,4 +1,4 @@
-import type { CosmosConfig } from '@config/config';
+import type { ConfigService } from '@config/config';
 import { injectable } from 'inversify';
 import { type Logger, pino } from 'pino';
 import pretty from 'pino-pretty';
@@ -17,7 +17,7 @@ export enum ENV_STATE_ENUM {
 export class LoggerService {
 	private _pino: PinoType;
 
-	public constructor(private readonly config: CosmosConfig) {
+	public constructor(private readonly config: ConfigService) {
 		const env = this.config.get<ENV_STATE_ENUM>(config.getEnvKey('ENV'));
 		if (env === ENV_STATE_ENUM.DEV) {
 			this._pino = pino(

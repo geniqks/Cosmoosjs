@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import { Env, type LoggerService } from 'src';
 @injectable()
-export class CosmosConfig {
+export class ConfigService {
 	public constructor(@inject('LoggerService') private readonly loggerService: LoggerService) {}
 
 	/**

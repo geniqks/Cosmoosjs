@@ -1,3 +1,4 @@
+import type { ConfigService } from '@config/config';
 import { type Env, IocContainer } from 'src';
 import type { IBootstrapConfig } from '../interfaces';
 
@@ -10,23 +11,25 @@ async function loadModule(importedModule: any) {
 	}
 }
 // TODO: refacto this file later
-export async function defineConfigAndBootstrapApp(config: IBootstrapConfig): Promise<{
+export async function defineConfigAndBootstrapApp(config: (injectedConfig: ConfigService) => IBootstrapConfig): Promise<{
 	port: number;
 	fetch: any;
 } | void> {
-	const iocBindingLoader = await loadModule(config.loaders.ioc);
-	const envLoader = await loadModule(config.loaders.env);
 	const env = IocContainer.container.get<Env>('Env');
+	const configService = IocContainer.container.get<ConfigService>('ConfigService');
+	const loadedConfig = config(configService);
+	const iocBindingLoader = await loadModule(loadedConfig.loaders.ioc);
+	const envLoader = await loadModule(loadedConfig.loaders.env);
 	env.process(envLoader);
 	iocBindingLoader(IocContainer.container);
 
-	if (config.entrypoint) {
-		const entrypoint = await loadModule(config.entrypoint);
+	if (loadedConfig.entrypoint) {
+		const entrypoint = await loadModule(loadedConfig.entrypoint);
 		entrypoint();
 	}
 
-	if (config.adapters?.server) {
-		const server = await config.adapters?.server.provider();
-		return server.HonoFactory.listen(config.adapters?.server.port, IocContainer.container);
+	if (loadedConfig.adapters?.server) {
+		const server = await loadedConfig.adapters?.server.provider();
+		return server.HonoFactory.listen(loadedConfig.adapters?.server.port, IocContainer.container);
 	}
 }
