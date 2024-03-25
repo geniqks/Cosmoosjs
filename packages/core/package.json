@@ -1,23 +1,23 @@
 {
-	"name": "@cosmosjs/core",
-	"version": "0.1",
-	"exports": {
-		".": "./src/index.ts"
-	},
-	"scripts": {
-		"build": "bun build ./src/index.ts --target bun --minify --outdir ./dist",
-		"test": "bun test",
-		"lint": "bunx biome lint ./src"
-	},
-	"dependencies": {
-		"inversify": "^6.0.2",
-		"reflect-metadata": "^0.2.1",
-		"typescript": "^5.4.2",
-		"zod": "^3.22.4",
-		"pino": "^8.19.0"
-	},
-	"devDependencies": {
-		"@types/bun": "^1.0.8",
-		"pino-pretty": "^10.3.1"
-	}
+  "name": "@cosmosjs/core",
+  "version": "0.1",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "bun build ./src/index.ts --target bun --minify --outdir ./dist",
+    "test": "bun test",
+    "lint": "bunx biome lint ./src"
+  },
+  "dependencies": {
+    "inversify": "^6.0.2",
+    "reflect-metadata": "^0.2.1",
+    "typescript": "^5.4.2",
+    "zod": "^3.22.4",
+    "pino": "^8.19.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.8",
+    "pino-pretty": "^10.3.1"
+  }
 }

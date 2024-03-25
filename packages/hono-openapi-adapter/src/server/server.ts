@@ -4,9 +4,9 @@ import { injectable } from 'inversify';
 
 @injectable()
 export class Server {
-	private _hono = new OpenAPIHono();
+  private _hono = new OpenAPIHono();
 
-	get hono(): OpenAPIHono<Env, {}, '/'> {
-		return this._hono;
-	}
+  get hono(): OpenAPIHono<Env, {}, '/'> {
+    return this._hono;
+  }
 }
