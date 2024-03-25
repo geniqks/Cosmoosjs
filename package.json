@@ -1,21 +1,21 @@
 {
-	"name": "cosmosjs",
-	"private": true,
-	"scripts": {
-		"test": "bunx turbo run test",
-		"build": "bunx turbo run build",
-		"lint": "bunx biome check ./packages",
-		"lint:safe": "bunx biome check --apply ./packages",
-		"lint:unsafe": "bunx biome check --apply-unsafe  ./packages",
-		"prepare": "husky"
-	},
-	"engines": {
-		"node": ">=20.11.0"
-	},
-	"packageManager": "bun@1.0.25",
-	"workspaces": ["packages/*", "sample/*"],
-	"devDependencies": {
-		"@biomejs/biome": "1.6.1",
-		"husky": "^9.0.11"
-	}
+  "name": "cosmosjs",
+  "private": true,
+  "scripts": {
+    "test": "bunx turbo run test",
+    "build": "bunx turbo run build",
+    "lint": "bunx biome check ./packages",
+    "lint:safe": "bunx biome check --apply ./packages",
+    "lint:unsafe": "bunx biome check --apply-unsafe  ./packages",
+    "prepare": "husky"
+  },
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "packageManager": "bun@1.0.25",
+  "workspaces": ["packages/*", "sample/*"],
+  "devDependencies": {
+    "@biomejs/biome": "1.6.1",
+    "husky": "^9.0.11"
+  }
 }

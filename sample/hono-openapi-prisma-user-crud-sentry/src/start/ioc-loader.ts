@@ -1,6 +1,7 @@
-import { Validator } from "../app/validator";
 import type { Container } from "inversify";
 import { ControllerRoot } from "@app/controllers";
+import { PrismaService } from "src/libs/prisma/prisma.service";
+import { UserController } from "@app/controllers/user.controller";
 
 /**
  * This file will list all the application's injectables. 
@@ -9,6 +10,7 @@ import { ControllerRoot } from "@app/controllers";
  * @link https://inversify.io/
  */
 export default (container: Container) => {
-  container.bind(Validator).toSelf();
-  container.bind(ControllerRoot).toSelf();
+  container.bind(UserController).toSelf().inRequestScope();
+  container.bind(PrismaService).toSelf().inSingletonScope();
+  container.bind(ControllerRoot).toSelf().inRequestScope();
 };
