@@ -2,6 +2,7 @@ import { ConfigService } from '@config/config';
 import { Env, IocContainer } from 'src';
 import type { IBootstrapConfig } from '../interfaces';
 
+//TODO: add app exception handler
 async function loadModule(importedModule: any) {
 	try {
 		const module = await importedModule();
@@ -30,6 +31,7 @@ export async function defineConfigAndBootstrapApp(config: (injectedConfig: Confi
 
 	if (loadedConfig.adapters?.server) {
 		const server = await loadedConfig.adapters?.server.provider();
+		//TODO: voir pour ne pas utiliser le dénominateur HonoFactory
 		return server.HonoFactory.listen(loadedConfig.adapters?.server.port, IocContainer.container);
 	}
 }
