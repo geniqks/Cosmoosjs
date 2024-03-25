@@ -20,8 +20,7 @@ const boostrapApp = async () => {
     loaders: {
       env: () => import('@start/env'),
       ioc: () => import('@start/ioc-loader'),
-    },
-    entrypoint: () => import('@app/index'),
+    }
   }));
 
   return config;

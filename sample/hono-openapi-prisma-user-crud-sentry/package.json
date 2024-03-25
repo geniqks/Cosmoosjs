@@ -10,7 +10,8 @@
 		"@cosmosjs/hono-openapi": "workspace:*",
 		"dotenv": "^16.4.5",
 		"inversify": "^6.0.2",
-		"reflect-metadata": "^0.2.1"
+		"reflect-metadata": "^0.2.1",
+		"prisma": "^5.11.0"
 	},
 	"devDependencies": {
 		"@types/bun": "^1.0.8"

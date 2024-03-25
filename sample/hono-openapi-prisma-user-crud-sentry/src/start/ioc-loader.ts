@@ -1,4 +1,3 @@
-import { Test } from "@app/index";
 import { Validator } from "../app/validator";
 import type { Container } from "inversify";
 import { ControllerRoot } from "@app/controllers";
@@ -11,6 +10,5 @@ import { ControllerRoot } from "@app/controllers";
  */
 export default (container: Container) => {
   container.bind(Validator).toSelf();
-  container.bind(Test).toSelf();
   container.bind(ControllerRoot).toSelf();
 };
