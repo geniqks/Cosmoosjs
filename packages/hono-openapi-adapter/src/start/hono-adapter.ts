@@ -1,16 +1,20 @@
 import type { Container } from 'inversify';
+import { CONTAINER, SERVER, SERVER_TARGET } from 'src/constants/reflector.constant';
 import { bindToContainers } from '../ioc';
-import type { Server } from '../server';
-class HonoAdapter {
-	public listen(port: number, container: Container) {
-		bindToContainers(container);
-		const app = container.get<Server>('Server');
+import { Server } from '../server';
 
-		return {
-			port,
-			fetch: app.hono.fetch,
-		};
-	}
+class HonoAdapter {
+  public listen(port: number, container: Container) {
+    bindToContainers(container);
+    const app = container.get(Server);
+    Reflect.defineMetadata(SERVER, app, SERVER_TARGET);
+    Reflect.defineMetadata(CONTAINER, container, SERVER_TARGET);
+
+    return {
+      port,
+      fetch: app.hono.fetch,
+    };
+  }
 }
 
 export const HonoFactory = new HonoAdapter();

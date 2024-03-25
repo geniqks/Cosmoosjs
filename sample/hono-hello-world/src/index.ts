@@ -1,3 +1,4 @@
+import { ControllerRoot } from '@app/controllers';
 import { IocContainer, LoggerService, defineConfigAndBootstrapApp } from '@cosmosjs/core';
 import type { ConfigService } from '@cosmosjs/core';
 import { serve } from 'bun';
@@ -28,6 +29,7 @@ const boostrapApp = async () => {
 
 boostrapApp().then((httpConfig) => {
   const logger = IocContainer.container.get(LoggerService);
+  const controllerRoot = IocContainer.container.get(ControllerRoot);
   try {
     serve({
       async fetch(req) {
@@ -36,6 +38,8 @@ boostrapApp().then((httpConfig) => {
       },
       port: httpConfig?.port,
     });
+
+    controllerRoot.setup();
     logger.pino.info(`Hono 🥟 Server Listening on port ${httpConfig?.port}`);
   } catch (e) {
     logger.pino.error(`An error occurred during server initialization, ${e}`);

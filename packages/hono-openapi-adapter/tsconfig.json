@@ -18,7 +18,18 @@
 		"noFallthroughCasesInSwitch": true,
 		"outDir": "./dist",
 		"baseUrl": ".",
-		"types": ["bun", "node", "reflect-metadata"]
+		"types": ["bun", "node", "reflect-metadata"],
+		"paths": {
+			"@guards/*": ["./src/guards/*"],
+			"@decorators/*": ["./src/decorators/*"],
+			"@enums/*": ["./src/enums/*"],
+			"@ioc/*": ["./src/ioc/*"],
+			"@middlewares/*": ["./src/middlewares/*"],
+			"@server/*": ["./src/server/*"],
+			"@start/*": ["./src/start/*"],
+			"@types/*": ["./src/types/*"],
+			"@utils/*": ["./src/utils/*"]
+		}
 	},
 	"include": ["src"]
 }

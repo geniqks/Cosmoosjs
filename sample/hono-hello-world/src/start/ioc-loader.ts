@@ -1,5 +1,7 @@
-import { Validator } from "../app/validator"
-import type { Container } from "inversify"
+import { Test } from "@app/index";
+import { Validator } from "../app/validator";
+import type { Container } from "inversify";
+import { ControllerRoot } from "@app/controllers";
 
 /**
  * This file will list all the application's injectables. 
@@ -8,5 +10,7 @@ import type { Container } from "inversify"
  * @link https://inversify.io/
  */
 export default (container: Container) => {
-  container.bind(Validator).toSelf()
-}
+  container.bind(Validator).toSelf();
+  container.bind(Test).toSelf();
+  container.bind(ControllerRoot).toSelf();
+};
