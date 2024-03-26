@@ -9,7 +9,7 @@ function hashError(safeParseReturn: any): safeParseReturn is SafeParseError<ZodE
 }
 
 @injectable()
-export class Env {
+export class Environment {
   /**
    * Access to zod library
    */

@@ -1,9 +1,9 @@
 import { inject, injectable } from 'inversify';
-import { Env } from 'src/env/env';
+import { Environment } from 'src/env/env';
 
 @injectable()
 export class ConfigService {
-  public constructor(@inject(Env) private readonly env: Env) {}
+  public constructor(@inject(Environment) private readonly env: Environment) {}
 
   /**
    * Get env variables
