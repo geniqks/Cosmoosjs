@@ -1,5 +1,5 @@
 import { ConfigService } from '@config/config';
-import { Env, IocContainer } from 'src';
+import { Environment, IocContainer } from 'src';
 import type { IBootstrapConfig } from '../interfaces';
 
 //TODO: add app exception handler
@@ -16,7 +16,7 @@ export async function defineConfigAndBootstrapApp(config: (injectedConfig: Confi
   port: number;
   fetch: any;
 } | void> {
-  const env = IocContainer.container.get<Env>(Env);
+  const env = IocContainer.container.get<Environment>(Environment);
   const configService = IocContainer.container.get<ConfigService>(ConfigService);
   const loadedConfig = config(configService);
   const iocBindingLoader = await loadModule(loadedConfig.loaders.ioc);
