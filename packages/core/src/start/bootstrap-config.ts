@@ -1,6 +1,7 @@
 import { ConfigService } from '@config/config';
 import { Environment, IocContainer } from 'src';
 import type { IBootstrapConfig } from '../interfaces';
+import type { IFactoryBaseConfig } from '@customTypes/index';
 
 //TODO: add app exception handler
 // TODO: refacto this file later (used in this state for developpement purpose)
@@ -12,6 +13,7 @@ async function loadModule(importedModule: any) {
     throw new Error(`Error loading module ${importedModule}: ${error?.message}`);
   }
 }
+
 export async function defineConfigAndBootstrapApp(config: (injectedConfig: ConfigService) => IBootstrapConfig): Promise<{
   port: number;
   fetch: any;
@@ -29,9 +31,16 @@ export async function defineConfigAndBootstrapApp(config: (injectedConfig: Confi
     entrypoint();
   }
 
+  
   if (loadedConfig.adapters?.server) {
     const server = await loadedConfig.adapters?.server.provider();
-    //TODO: voir pour ne pas utiliser le dénominateur HonoFactory
-    return server.HonoFactory.listen(loadedConfig.adapters?.server.port, IocContainer.container);
+    const exceptionHandler = await loadedConfig.adapters?.server.exceptions;
+    const httpConfig: IFactoryBaseConfig = {
+      port: loadedConfig.adapters?.server.port,
+    };
+
+    server.HttpFactory.bindContainers(IocContainer.container);
+    server.HttpFactory.exceptionHandler(exceptionHandler);
+    server.HttpFactory.listen(httpConfig);
   }
 }

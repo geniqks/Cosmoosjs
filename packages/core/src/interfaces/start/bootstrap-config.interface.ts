@@ -4,11 +4,15 @@ export interface IBootstrapConfig {
    */
   adapters: {
     /**
-     * HTTP server to be used
+     * HTTP server config
      */
     server: {
+      /** Port to be used */
       port: number;
+      /** HTTP server to be used */
       provider: () => Promise<any>;
+      /** Exceptions handler */
+      exceptions: () => Promise<any>;
     };
     /**
      * Orm to be used
