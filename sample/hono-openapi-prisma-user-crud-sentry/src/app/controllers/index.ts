@@ -1,7 +1,8 @@
 import { Get } from '@cosmosjs/hono-openapi';
 import { inject, injectable } from 'inversify';
 import { UserController } from './user.controller';
-export * as hono from 'hono';
+import type * as hono from 'hono';
+import { HTTPException } from 'hono/http-exception';
 
 @injectable()
 export class ControllerRoot {
@@ -17,8 +18,8 @@ export class ControllerRoot {
     responses: {},
   })
   private helloWorld(ctx?: hono.Context): unknown {
-    if (ctx) {
-      return ctx.json('Hello world, back is working fine');
-    }
+    throw new HTTPException(500, {
+      message: 'Hello my name is error'
+    })
   }
 }

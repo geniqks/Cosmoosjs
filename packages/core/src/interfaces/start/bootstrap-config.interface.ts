@@ -12,7 +12,7 @@ export interface IBootstrapConfig {
       /** HTTP server to be used */
       provider: () => Promise<any>;
       /** Exceptions handler */
-      exceptions: () => Promise<any>;
+      exceptions?: () => Promise<any>;
     };
     /**
      * Orm to be used

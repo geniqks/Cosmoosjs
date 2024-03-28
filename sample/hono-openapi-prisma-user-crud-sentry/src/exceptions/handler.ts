@@ -5,7 +5,6 @@ import type * as hono from 'hono';
 
 export default (err: Error, ctx: hono.Context, logger: LoggerService) => {
   logger.pino.error(err);
-  logger.pino.info('je suis ici');
   if (err instanceof HTTPException) {
     return err.getResponse();
   }

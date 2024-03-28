@@ -43,7 +43,7 @@ class HonoAdapter extends HttpAdapter {
     const logger = IocContainer.container.get(LoggerService);
     if (handler) {
       app.hono.onError((err, ctx) => {
-        return handler(err, ctx);
+        return handler(err, ctx, logger);
       });
     } else {
       app.hono.onError((err, c) => {

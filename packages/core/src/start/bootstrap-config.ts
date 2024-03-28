@@ -33,7 +33,7 @@ export async function defineConfigAndBootstrapApp(config: (injectedConfig: Confi
 
   if (loadedConfig.adapters?.server) {
     const server = await loadedConfig.adapters?.server.provider();
-    const exceptionHandler = await loadedConfig.adapters?.server.exceptions;
+    const exceptionHandler = await loadModule(loadedConfig.adapters?.server.exceptions);
     const httpConfig: IFactoryBaseConfig = {
       port: loadedConfig.adapters?.server.port,
     };
