@@ -1,8 +1,8 @@
+import type { GuardsType } from '@customTypes/index';
 import { SERVER, SERVER_TARGET } from 'src/constants/reflector.constant';
 import { guardHandler } from 'src/decorators';
 import { RequestMethod } from 'src/enums/request-method';
 import type { Server } from 'src/server';
-import type { GuardsType } from 'src/types/guards';
 import { serializeRoutePath } from 'src/utils/utils';
 
 /**

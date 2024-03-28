@@ -1,11 +1,10 @@
+import type { GuardsType, RouteParameters } from '@customTypes/index';
 import { createRoute } from '@hono/zod-openapi';
 import { StatusCodes } from 'http-status-codes';
 import { GUARD, PATH_METADATA, SERVER, SERVER_TARGET } from 'src/constants/reflector.constant';
 import { RequestMethod } from 'src/enums/request-method';
 import { guardMiddleware } from 'src/middlewares/guards.middleware';
 import type { Server } from 'src/server';
-import type { RouteParameters } from 'src/types/custom-hono-zod';
-import type { GuardsType } from 'src/types/guards';
 
 function controllerHandler(options: RouteParameters, requestType: RequestMethod, target: any, guards: GuardsType[], thisArg: any) {
   const server: Server = Reflect.getMetadata(SERVER, SERVER_TARGET);
