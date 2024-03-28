@@ -1,11 +1,11 @@
 import { Get } from '@cosmosjs/hono-openapi';
-import type { hono } from '@cosmosjs/hono-openapi';
 import { inject, injectable } from 'inversify';
 import { UserController } from './user.controller';
+export * as hono from 'hono';
 
 @injectable()
 export class ControllerRoot {
-  constructor(@inject(UserController) private readonly userController: UserController) {}
+  constructor(@inject(UserController) private readonly userController: UserController) { }
 
   public setup(): void {
     this.userController.setup();

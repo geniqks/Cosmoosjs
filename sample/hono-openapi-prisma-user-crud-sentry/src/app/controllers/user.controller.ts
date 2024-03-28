@@ -1,6 +1,6 @@
 import { Delete, Get, Patch, Post } from '@cosmosjs/hono-openapi';
-import type { hono } from '@cosmosjs/hono-openapi';
 import { injectable } from 'inversify';
+import type * as hono from 'hono';
 
 @injectable()
 export class UserController {
@@ -13,7 +13,7 @@ export class UserController {
   }
 
   @Post({
-    path: '/',
+    path: '/user/',
     responses: {},
   })
   private create(ctx?: hono.Context): unknown {
@@ -23,7 +23,7 @@ export class UserController {
   }
 
   @Get({
-    path: '/',
+    path: '/user/',
     responses: {},
   })
   private get(ctx?: hono.Context): unknown {
@@ -33,7 +33,7 @@ export class UserController {
   }
 
   @Get({
-    path: '/',
+    path: '/user/',
     responses: {},
   })
   private getUsers(ctx?: hono.Context): unknown {
@@ -43,7 +43,7 @@ export class UserController {
   }
 
   @Patch({
-    path: '/',
+    path: '/user/',
     responses: {},
   })
   private update(ctx?: hono.Context): unknown {
@@ -53,7 +53,7 @@ export class UserController {
   }
 
   @Delete({
-    path: '/',
+    path: '/user/',
     responses: {},
   })
   private delete(ctx?: hono.Context): unknown {
@@ -61,5 +61,4 @@ export class UserController {
       return ctx.json('Hello world, back is working fine');
     }
   }
-  
 }

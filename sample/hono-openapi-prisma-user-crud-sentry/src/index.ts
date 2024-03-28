@@ -15,6 +15,7 @@ const boostrapApp = async () => {
       server: {
         port: config.get<number>('PORT'),
         provider: () => import('@cosmosjs/hono-openapi'),
+        exceptions: () => import('./exceptions/handler')
       },
     },
     loaders: {
