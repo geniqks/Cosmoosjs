@@ -1,14 +1,13 @@
 import { ConfigService, ENV_STATE_ENUM, HttpAdapter, IocContainer, LoggerService } from '@cosmosjs/core';
+import type { IFactoryConfig } from '@customTypes/index';
+import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import type { Container } from 'inversify';
 import { CONTAINER, SERVER, SERVER_TARGET } from 'src/constants/reflector.constant';
 import { bindToContainers } from '../ioc';
 import { Server } from '../server';
-import type { IFactoryConfig } from '@customTypes/index';
-import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 
 class HonoAdapter extends HttpAdapter {
-
-  public bindContainers(container: Container){
+  public bindContainers(container: Container) {
     bindToContainers(container);
   }
 
@@ -39,14 +38,16 @@ class HonoAdapter extends HttpAdapter {
   }
 
   /** Error Handling */
-  public exceptionHandler(handler: Function){
+  public exceptionHandler(handler: Function) {
     const app = IocContainer.container.get(Server);
     const logger = IocContainer.container.get(LoggerService);
-    if(handler){
-      app.hono.onError((err, ctx) => { return handler(err, ctx)});
-    }else{
+    if (handler) {
+      app.hono.onError((err, ctx) => {
+        return handler(err, ctx);
+      });
+    } else {
       app.hono.onError((err, c) => {
-        logger.pino.error(err)
+        logger.pino.error(err);
         return c.text(ReasonPhrases.INTERNAL_SERVER_ERROR, StatusCodes.INTERNAL_SERVER_ERROR);
       });
     }

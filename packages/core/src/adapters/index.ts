@@ -1,1 +1,1 @@
-export { HttpAdapter } from './http-adapter'
+export { HttpAdapter } from './http-adapter';

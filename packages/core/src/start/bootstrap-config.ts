@@ -1,7 +1,7 @@
 import { ConfigService } from '@config/config';
+import type { IFactoryBaseConfig } from '@customTypes/index';
 import { Environment, IocContainer } from 'src';
 import type { IBootstrapConfig } from '../interfaces';
-import type { IFactoryBaseConfig } from '@customTypes/index';
 
 //TODO: add app exception handler
 // TODO: refacto this file later (used in this state for developpement purpose)
@@ -31,7 +31,6 @@ export async function defineConfigAndBootstrapApp(config: (injectedConfig: Confi
     entrypoint();
   }
 
-  
   if (loadedConfig.adapters?.server) {
     const server = await loadedConfig.adapters?.server.provider();
     const exceptionHandler = await loadedConfig.adapters?.server.exceptions;
@@ -41,6 +40,6 @@ export async function defineConfigAndBootstrapApp(config: (injectedConfig: Confi
 
     server.HttpFactory.bindContainers(IocContainer.container);
     server.HttpFactory.exceptionHandler(exceptionHandler);
-    server.HttpFactory.listen(httpConfig);
+    return server.HttpFactory.listen(httpConfig);
   }
 }

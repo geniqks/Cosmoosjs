@@ -8,4 +8,4 @@ export * from './ioc';
 export * from './start';
 export * from './services';
 export * from './config';
-export * from './adapters'
+export * from './adapters';
