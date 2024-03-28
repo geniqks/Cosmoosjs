@@ -22,7 +22,8 @@
     "baseUrl": ".",
     "paths": {
       "@app/*": ["./src/app/*"],
-      "@start/*": ["./src/start/*"]
+      "@exceptions/*": ["./src/exceptions/*"],
+      "@start/*": ["./src/start/*"],
     },
     "types": [
       "bun",
