@@ -1,6 +1,7 @@
 import { ControllerRoot } from '@app/controllers';
 import { IocContainer, LoggerService, defineConfigAndBootstrapApp } from '@cosmosjs/core';
 import type { ConfigService, IBootstrapConfig } from '@cosmosjs/core';
+import type { FactoryOASMetadatas } from '@cosmosjs/hono-openapi';
 import { serve } from 'bun';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -11,19 +12,37 @@ dotenv.config();
  */
 const boostrapApp = async () => {
   const config = await defineConfigAndBootstrapApp((config: ConfigService) => {
-    const bootstrapedConfig: IBootstrapConfig = {
+    const bootstrapedConfig: IBootstrapConfig<FactoryOASMetadatas> = {
       adapters: {
         server: {
           port: config.get<number>('PORT'),
+          metadata: {
+            enabledSwaggerInProd: false,
+            openapi: {
+              url: 'doc',
+              config: {
+                info: {
+                  title: 'User Crud Sample',
+                  version: 'v1',
+                },
+                openapi: '3.1.0',
+                servers: [
+                  {
+                    url: 'http://localhost:3008',
+                  },
+                ],
+              },
+            },
+          },
           provider: () => import('@cosmosjs/hono-openapi'),
-          exceptions: () => import('@exceptions/handler')
+          exceptions: () => import('@exceptions/handler'),
         },
       },
       loaders: {
         env: () => import('@start/env'),
         ioc: () => import('@start/ioc-loader'),
-      }
-    }
+      },
+    };
     return bootstrapedConfig;
   });
   return config;
