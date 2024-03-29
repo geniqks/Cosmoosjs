@@ -12,5 +12,5 @@ import { ENV_STATE_ENUM, Environment } from "@cosmosjs/core";
  */ 
 export default {
   PORT: Environment.validator.string().transform(Number),
-  ENV: Environment.validator.nativeEnum(ENV_STATE_ENUM)
+  ENV: Environment.validator.nativeEnum(ENV_STATE_ENUM),
 }
