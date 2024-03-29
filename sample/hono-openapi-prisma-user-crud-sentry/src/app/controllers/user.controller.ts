@@ -1,9 +1,14 @@
-import { Delete, Get, Patch, Post } from '@cosmosjs/hono-openapi';
-import { injectable } from 'inversify';
+import { Delete, Get, Post, Put } from '@cosmosjs/hono-openapi';
+import { inject, injectable } from 'inversify';
 import type * as hono from 'hono';
+import { UserService } from 'src/libs/user/user.service';
+import type { Prisma } from '@prisma/client';
+import { UserInputSchema } from 'src/libs/user/user.schema';
 
 @injectable()
 export class UserController {
+  constructor(@inject(UserService) private readonly userService: UserService) {}
+
   public setup(): void {
     this.create();
     this.get();
@@ -13,52 +18,80 @@ export class UserController {
   }
 
   @Post({
-    path: '/user/',
+    path: '/user',
+    request: {
+      body: {
+        content: {
+          'application/json': {
+            schema: UserInputSchema,
+          },
+        },
+      },
+    },
     responses: {},
   })
-  private create(ctx?: hono.Context): unknown {
+  private async create(ctx?: hono.Context) {
     if (ctx) {
-      return ctx.json('Hello world, back is working fine');
+      const body = (await ctx.req.json()) as Prisma.UserUncheckedCreateInput;
+      const userCreated = await this.userService.createUser(body);
+      return ctx.json(userCreated);
     }
   }
 
   @Get({
-    path: '/user/',
+    path: '/user/{userId}',
     responses: {},
   })
-  private get(ctx?: hono.Context): unknown {
+  private async get(ctx?: hono.Context): Promise<unknown> {
     if (ctx) {
-      return ctx.json('Hello world, back is working fine');
+      const { userId } = ctx.req.param();
+      const user = await this.userService.findById(+userId);
+      return ctx.json(user);
     }
   }
 
   @Get({
-    path: '/user/',
+    path: '/user',
     responses: {},
   })
-  private getUsers(ctx?: hono.Context): unknown {
+  private async getUsers(ctx?: hono.Context) {
     if (ctx) {
-      return ctx.json('Hello world, back is working fine');
+      const user = await this.userService.getUsers();
+      return ctx.json(user);
     }
   }
 
-  @Patch({
-    path: '/user/',
+  @Put({
+    path: '/user/{userId}',
+    request: {
+      body: {
+        content: {
+          'application/json': {
+            schema: UserInputSchema,
+          },
+        },
+      },
+    },
     responses: {},
   })
-  private update(ctx?: hono.Context): unknown {
+  private async update(ctx?: hono.Context) {
     if (ctx) {
-      return ctx.json('Hello world, back is working fine');
+      const { userId } = ctx.req.param();
+      const body = (await ctx.req.json()) as Prisma.UserUncheckedUpdateInput;
+      const updatedUser = await this.userService.update(+userId, body);
+      return ctx.json(updatedUser);
     }
   }
 
   @Delete({
-    path: '/user/',
+    path: '/user/{userId}',
     responses: {},
   })
-  private delete(ctx?: hono.Context): unknown {
+  private async delete(ctx?: hono.Context) {
     if (ctx) {
-      return ctx.json('Hello world, back is working fine');
+      const { userId } = ctx.req.param();
+      const deleted = await this.userService.delete(+userId);
+      return ctx.json(deleted);
     }
   }
 }

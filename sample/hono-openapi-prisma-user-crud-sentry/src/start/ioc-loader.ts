@@ -2,6 +2,8 @@ import type { Container } from "inversify";
 import { ControllerRoot } from "@app/controllers";
 import { PrismaService } from "src/libs/prisma/prisma.service";
 import { UserController } from "@app/controllers/user.controller";
+import { UserRepository } from "src/libs/user/user.repository";
+import { UserService } from "src/libs/user/user.service";
 
 /**
  * This file will list all the application's injectables. 
@@ -13,4 +15,6 @@ export default (container: Container) => {
   container.bind(UserController).toSelf().inRequestScope();
   container.bind(PrismaService).toSelf().inSingletonScope();
   container.bind(ControllerRoot).toSelf().inRequestScope();
+  container.bind(UserService).toSelf().inRequestScope();
+  container.bind(UserRepository).toSelf().inRequestScope();
 };
