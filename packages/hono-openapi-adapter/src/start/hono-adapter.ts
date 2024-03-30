@@ -1,5 +1,6 @@
 import { ConfigService, ENV_STATE_ENUM, HttpAdapter, IocContainer, LoggerService } from '@cosmosjs/core';
-import type { IFactoryConfig } from '@customTypes/index';
+import type { FactoryConfig } from '@customTypes/index';
+import { swaggerUI } from '@hono/swagger-ui';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import type { Container } from 'inversify';
 import { CONTAINER, SERVER, SERVER_TARGET } from 'src/constants/reflector.constant';
@@ -11,25 +12,23 @@ class HonoAdapter extends HttpAdapter {
     bindToContainers(container);
   }
 
-  public listen(config: IFactoryConfig) {
+  public listen(config: FactoryConfig<string>) {
     const app = IocContainer.container.get(Server);
     const configService = IocContainer.container.get(ConfigService);
     Reflect.defineMetadata(SERVER, app, SERVER_TARGET);
     Reflect.defineMetadata(CONTAINER, IocContainer.container, SERVER_TARGET);
 
-    // TODO: add swagger / openApi
-    if (configService.get('ENV') === ENV_STATE_ENUM.DEV) {
+    const url = config.metadata?.openapi?.url ?? '/doc';
+    // Setup open api
+    app.hono.doc(url, config.metadata.openapi.config);
+    if (configService.get('ENV') === ENV_STATE_ENUM.DEV || config.metadata?.enabledSwaggerInProd) {
       // Setup swagger
-      // app.hono.get(
-      //   '/swagger',
-      //   swaggerUI({
-      //     url: config.openapi.url,
-      //   }),
-      // );
-
-      // Setup open api
-      const formattedUrl = `${configService.get('URL')}:${configService.get('PORT')}`;
-      // app.hono.doc('doc', {});
+      app.hono.get(
+        '/swagger',
+        swaggerUI({
+          url,
+        }),
+      );
     }
     return {
       port: config.port,
