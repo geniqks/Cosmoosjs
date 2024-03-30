@@ -6,7 +6,8 @@
   "files": {
     "ignore": [
       "**/*/dist",
-      "node_modules/**/*"
+      "node_modules/**/*",
+      "**/*.js"
     ]
   },
   "linter": {
