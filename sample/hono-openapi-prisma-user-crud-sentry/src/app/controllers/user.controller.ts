@@ -1,20 +1,69 @@
-import { Delete, Get, Post, Put } from '@cosmosjs/hono-openapi';
-import { inject, injectable } from 'inversify';
 import type * as hono from 'hono';
-import { UserService } from 'src/libs/user/user.service';
 import type { Prisma } from '@prisma/client';
+import { AuthorizationSchema } from 'src/schemas/header.schema';
+import { Delete, Get, Post, Put, Server } from '@cosmosjs/hono-openapi';
+import { JwtMiddleware } from '@app/middlewares/jwt';
 import { UserInputSchema } from 'src/libs/user/user.schema';
+import { UserService } from 'src/libs/user/user.service';
+import { inject, injectable } from 'inversify';
+import { StatusCodes } from 'http-status-codes';
+import type { UserLoginInput } from 'src/libs/user/user.type';
 
 @injectable()
 export class UserController {
-  constructor(@inject(UserService) private readonly userService: UserService) {}
+  constructor(
+    @inject(UserService) private readonly userService: UserService,
+    @inject(JwtMiddleware) private readonly jwtMiddleware: JwtMiddleware,
+    @inject(Server) private readonly server: Server,
+  ) {}
 
   public setup(): void {
+    this.server.hono.use('/user/me', this.jwtMiddleware.get());
+    this.me();
+    this.localLogin();
     this.create();
     this.get();
     this.getUsers();
     this.delete();
     this.update();
+  }
+
+  @Post({
+    path: '/auth/login',
+    tags: ['Auth'],
+    request: {
+      body: {
+        content: {
+          'application/json': {
+            schema: UserInputSchema,
+          },
+        },
+      },
+    },
+    responses: {},
+  })
+  private async localLogin(ctx?: hono.Context): Promise<unknown> {
+    if (ctx) {
+      const body = (await ctx.req.json()) as UserLoginInput;
+      const createdUser = await this.userService.login(body);
+      ctx.status(StatusCodes.OK);
+      return ctx.json(createdUser);
+    }
+  }
+
+  @Get({
+    path: '/user/me',
+    tags: ['Users'],
+    request: {
+      headers: AuthorizationSchema,
+    },
+    responses: {},
+  })
+  private me(ctx?: hono.Context): unknown {
+    if (ctx) {
+      const me = ctx.get('jwtPayload');
+      return ctx.json({ me });
+    }
   }
 
   @Post({
@@ -34,6 +83,7 @@ export class UserController {
     if (ctx) {
       const body = (await ctx.req.json()) as Prisma.UserUncheckedCreateInput;
       const userCreated = await this.userService.createUser(body);
+      ctx.status(StatusCodes.CREATED);
       return ctx.json(userCreated);
     }
   }

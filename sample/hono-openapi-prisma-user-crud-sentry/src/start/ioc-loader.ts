@@ -4,6 +4,7 @@ import { PrismaService } from "src/libs/prisma/prisma.service";
 import { UserController } from "@app/controllers/user.controller";
 import { UserRepository } from "src/libs/user/user.repository";
 import { UserService } from "src/libs/user/user.service";
+import { JwtMiddleware } from "@app/middlewares/jwt";
 
 /**
  * This file will list all the application's injectables. 
@@ -12,9 +13,10 @@ import { UserService } from "src/libs/user/user.service";
  * @link https://inversify.io/
  */
 export default (container: Container) => {
-  container.bind(UserController).toSelf().inRequestScope();
-  container.bind(PrismaService).toSelf().inSingletonScope();
   container.bind(ControllerRoot).toSelf().inRequestScope();
-  container.bind(UserService).toSelf().inRequestScope();
+  container.bind(JwtMiddleware).toSelf().inRequestScope();
+  container.bind(PrismaService).toSelf().inSingletonScope();
+  container.bind(UserController).toSelf().inRequestScope();
   container.bind(UserRepository).toSelf().inRequestScope();
+  container.bind(UserService).toSelf().inRequestScope();
 };

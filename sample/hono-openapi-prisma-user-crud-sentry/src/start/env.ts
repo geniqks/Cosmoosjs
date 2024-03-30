@@ -13,5 +13,9 @@ import { ENV_STATE_ENUM, Environment } from "@cosmosjs/core";
 export default {
   DATABASE_URL: Environment.validator.string(),
   ENV: Environment.validator.nativeEnum(ENV_STATE_ENUM),
+  JWT_TOKEN: Environment.validator.string(),
+  ORIGINS: Environment.validator.string(),
   PORT: Environment.validator.string().transform(Number),
+  SALT_ROUND: Environment.validator.string(),
+  SENTRY_DSN: Environment.validator.string(),
 }

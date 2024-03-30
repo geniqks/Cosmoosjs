@@ -18,6 +18,7 @@ const boostrapApp = async () => {
           port: config.get<number>('PORT'),
           metadata: {
             enableSwaggerInProd: false,
+            swaggerUrl: 'swagger',
             openapi: {
               url: 'doc',
               config: {
@@ -42,6 +43,7 @@ const boostrapApp = async () => {
         env: () => import('@start/env'),
         ioc: () => import('@start/ioc-loader'),
       },
+      entrypoint: () => import('@app/index')
     };
     return bootstrapedConfig;
   });
