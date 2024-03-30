@@ -21,7 +21,7 @@ class HonoAdapter extends HttpAdapter {
     const url = config.metadata?.openapi?.url ?? '/doc';
     // Setup open api
     app.hono.doc(url, config.metadata.openapi.config);
-    if (configService.get('ENV') === ENV_STATE_ENUM.DEV || config.metadata?.enabledSwaggerInProd) {
+    if (configService.get('ENV') === ENV_STATE_ENUM.DEV || config.metadata?.enableSwaggerInProd) {
       // Setup swagger
       app.hono.get(
         '/swagger',

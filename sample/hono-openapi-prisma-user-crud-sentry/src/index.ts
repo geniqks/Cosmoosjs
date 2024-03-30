@@ -17,7 +17,7 @@ const boostrapApp = async () => {
         server: {
           port: config.get<number>('PORT'),
           metadata: {
-            enabledSwaggerInProd: false,
+            enableSwaggerInProd: false,
             openapi: {
               url: 'doc',
               config: {

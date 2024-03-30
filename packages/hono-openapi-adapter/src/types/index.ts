@@ -11,7 +11,7 @@ export type FactoryOAS<T extends string> = {
 };
 export type FactoryOASMetadatas<T extends string = ''> = {
   /** default: false */
-  enabledSwaggerInProd: boolean;
+  enableSwaggerInProd: boolean;
   openapi: {
     /** Url of OAP */
     url: string;
