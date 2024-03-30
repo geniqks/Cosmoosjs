@@ -1,1 +1,1 @@
-export type IFactoryBaseConfig = { port: number };
+export type FactoryBaseConfig = { port: number };

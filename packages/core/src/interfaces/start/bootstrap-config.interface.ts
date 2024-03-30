@@ -46,3 +46,8 @@ export interface IBootstrapConfig<T = any> {
    */
   entrypoint?: () => Promise<any>;
 }
+
+export interface IHttpServe {
+  port: number;
+  fetch: any;
+}
