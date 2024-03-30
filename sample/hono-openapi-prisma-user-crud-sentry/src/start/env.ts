@@ -11,6 +11,7 @@ import { ENV_STATE_ENUM, Environment } from "@cosmosjs/core";
  * @link https://zod.dev/
  */ 
 export default {
-  PORT: Environment.validator.string().transform(Number),
+  DATABASE_URL: Environment.validator.string(),
   ENV: Environment.validator.nativeEnum(ENV_STATE_ENUM),
+  PORT: Environment.validator.string().transform(Number),
 }
