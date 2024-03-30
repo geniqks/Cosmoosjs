@@ -1,6 +1,6 @@
 {
   "name": "@cosmoosjs/hono-openapi",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Http server using hono zod for @cosmoosjs/core",
   "main": "./dist/index.js",
   "license": "MIT",
@@ -15,7 +15,8 @@
     "url": "https://github.com/ae-creator/CosmosJS/issues"
   },
   "scripts": {
-    "build": "bun build ./src/index.ts --minify --target=bun",
+    "build": "bun build ./src/index.ts --minify --target=bun && bun run build:declaration",
+    "build:declaration": "bunx tsc --emitDeclarationOnly --outDir ./src",
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {

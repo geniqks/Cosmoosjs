@@ -8,9 +8,7 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     // Bundler mode
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "moduleResolution": "Bundler",
     // Best practices
     "strict": true,
     "skipLibCheck": true,

@@ -1,8 +1,9 @@
 {
   "name": "@cosmoosjs/core",
   "description": "create backend applications quickly and easily with bun.sh",
-  "version": "1.0.0",
-  "main": "./dist/index.js",
+  "version": "1.0.2",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "license": "MIT",
   "exports": {
     ".": "./src/index.ts"
@@ -15,7 +16,8 @@
     "url": "https://github.com/ae-creator/CosmosJS/issues"
   },
   "scripts": {
-    "build": "bun build ./src/index.ts --minify --target=bun",
+    "build": "bun build ./src/index.ts --minify --target=bun && bun run build:declaration",
+    "build:declaration": "bunx tsc --emitDeclarationOnly --outDir ./src",
     "test": "bun test",
     "lint": "bunx biome lint ./src"
   },

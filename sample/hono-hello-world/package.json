@@ -6,8 +6,6 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "@cosmoosjs/core": "workspace:*",
-    "@cosmoosjs/hono-openapi": "workspace:*",
     "dotenv": "^16.4.5",
     "inversify": "^6.0.2",
     "reflect-metadata": "^0.2.1"
