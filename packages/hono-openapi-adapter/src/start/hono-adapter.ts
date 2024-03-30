@@ -18,15 +18,17 @@ class HonoAdapter extends HttpAdapter {
     Reflect.defineMetadata(SERVER, app, SERVER_TARGET);
     Reflect.defineMetadata(CONTAINER, IocContainer.container, SERVER_TARGET);
 
-    const url = config.metadata?.openapi?.url ?? '/doc';
+    const oasUrl = config.metadata?.openapi?.url ?? '/doc';
+    const swaggerUrl = config.metadata?.swaggerUrl ?? '/swagger';
+
     // Setup open api
-    app.hono.doc(url, config.metadata.openapi.config);
+    app.hono.doc(oasUrl, config.metadata.openapi.config);
     if (configService.get('ENV') === ENV_STATE_ENUM.DEV || config.metadata?.enableSwaggerInProd) {
       // Setup swagger
       app.hono.get(
-        '/swagger',
+        swaggerUrl,
         swaggerUI({
-          url,
+          url: oasUrl,
         }),
       );
     }
