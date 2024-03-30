@@ -1,13 +1,14 @@
 import type * as hono from 'hono';
 import type { Prisma } from '@prisma/client';
 import { AuthorizationSchema } from 'src/schemas/header.schema';
-import { Delete, Get, Post, Put, Server } from '@cosmosjs/hono-openapi';
+import { Delete, Get, Guards, Post, Put, Server } from '@cosmosjs/hono-openapi';
 import { JwtMiddleware } from '@app/middlewares/jwt';
 import { UserInputSchema } from 'src/libs/user/user.schema';
 import { UserService } from 'src/libs/user/user.service';
 import { inject, injectable } from 'inversify';
 import { StatusCodes } from 'http-status-codes';
 import type { UserLoginInput } from 'src/libs/user/user.type';
+import { TestGuard } from 'src/libs/guards/test.guard';
 
 @injectable()
 export class UserController {
@@ -42,6 +43,7 @@ export class UserController {
     },
     responses: {},
   })
+  @Guards(TestGuard)
   private async localLogin(ctx?: hono.Context): Promise<unknown> {
     if (ctx) {
       const body = (await ctx.req.json()) as UserLoginInput;
