@@ -31,7 +31,6 @@ declare type LinksObject = LinksObject30 | LinksObject31;
 declare type OperationObject = OperationObject30 | OperationObject31;
 declare type ReferenceObject = ReferenceObject30 | ReferenceObject31;
 declare type SchemaObject = SchemaObject30 | SchemaObject31;
-declare type Method = 'get' | 'post' | 'put' | 'delete' | 'patch' | 'head' | 'options' | 'trace';
 interface ZodMediaTypeObject {
   schema: ZodType<unknown> | SchemaObject | ReferenceObject;
   examples?: ExamplesObject;

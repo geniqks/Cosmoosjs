@@ -1,7 +1,7 @@
+import type { GuardsType } from '@customTypes/index';
 import type * as hono from 'hono';
 import type { Container } from 'inversify';
 import { CONTAINER, GUARD, SERVER_TARGET } from 'src/constants/reflector.constant';
-import type { GuardsType } from 'src/types/guards';
 
 export function guardHandler(guards: GuardsType[], ctx?: hono.Context): void {
   const container: Container = Reflect.getMetadata(CONTAINER, SERVER_TARGET);

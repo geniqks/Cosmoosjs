@@ -1,14 +1,20 @@
-export interface IBootstrapConfig {
+export interface IBootstrapConfig<T = any> {
   /**
    * Adapters let you choose the tools you'll use during application development
    */
   adapters: {
     /**
-     * HTTP server to be used
+     * HTTP server config
      */
     server: {
+      /** Port to be used */
       port: number;
+      /** */
+      metadata?: T;
+      /** HTTP server to be used */
       provider: () => Promise<any>;
+      /** Exceptions handler */
+      exceptions?: () => Promise<any>;
     };
     /**
      * Orm to be used
@@ -39,4 +45,9 @@ export interface IBootstrapConfig {
    * The entry point to your application
    */
   entrypoint?: () => Promise<any>;
+}
+
+export interface IHttpServe {
+  port: number;
+  fetch: any;
 }

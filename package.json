@@ -13,10 +13,7 @@
     "node": ">=20.11.0"
   },
   "packageManager": "bun@1.0.25",
-  "workspaces": [
-    "packages/*",
-    "sample/*"
-  ],
+  "workspaces": ["packages/*", "sample/*"],
   "devDependencies": {
     "@biomejs/biome": "1.6.1",
     "husky": "^9.0.11"

@@ -1,6 +1,7 @@
 import { ControllerRoot } from '@app/controllers';
 import { IocContainer, LoggerService, defineConfigAndBootstrapApp } from '@cosmosjs/core';
-import type { ConfigService } from '@cosmosjs/core';
+import type { ConfigService, IBootstrapConfig } from '@cosmosjs/core';
+import type { FactoryOASMetadatas } from '@cosmosjs/hono-openapi';
 import { serve } from 'bun';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -10,20 +11,42 @@ dotenv.config();
  * and will return the http config in order to start the server.
  */
 const boostrapApp = async () => {
-  const config = await defineConfigAndBootstrapApp((config: ConfigService) => ({
-    adapters: {
-      server: {
-        port: config.get<number>('PORT'),
-        provider: () => import('@cosmosjs/hono-openapi'),
+  const config = await defineConfigAndBootstrapApp((config: ConfigService) => {
+    const bootstrapedConfig: IBootstrapConfig<FactoryOASMetadatas> = {
+      adapters: {
+        server: {
+          port: config.get<number>('PORT'),
+          metadata: {
+            enableSwaggerInProd: false,
+            swaggerUrl: 'swagger',
+            openapi: {
+              url: 'doc',
+              config: {
+                info: {
+                  title: 'User Crud Sample',
+                  version: 'v1',
+                },
+                openapi: '3.1.0',
+                servers: [
+                  {
+                    url: 'http://localhost:3008',
+                  },
+                ],
+              },
+            },
+          },
+          provider: () => import('@cosmosjs/hono-openapi'),
+          exceptions: () => import('@exceptions/handler'),
+        },
       },
-    },
-    loaders: {
-      env: () => import('@start/env'),
-      ioc: () => import('@start/ioc-loader'),
-    },
-    entrypoint: () => import('@app/index'),
-  }));
-
+      loaders: {
+        env: () => import('@start/env'),
+        ioc: () => import('@start/ioc-loader'),
+      },
+      entrypoint: () => import('@app/index')
+    };
+    return bootstrapedConfig;
+  });
   return config;
 };
 

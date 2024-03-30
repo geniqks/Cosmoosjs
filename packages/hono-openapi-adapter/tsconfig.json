@@ -27,7 +27,7 @@
       "@middlewares/*": ["./src/middlewares/*"],
       "@server/*": ["./src/server/*"],
       "@start/*": ["./src/start/*"],
-      "@types/*": ["./src/types/*"],
+      "@customTypes/*": ["./src/types/*"],
       "@utils/*": ["./src/utils/*"]
     }
   },

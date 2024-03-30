@@ -1,7 +1,8 @@
 import 'reflect-metadata';
 
-export { HonoFactory } from './start/hono-adapter';
+export { HttpFactory } from './start/hono-adapter';
 export * from './server';
 export * from './guards';
 export * from './decorators';
-export * as hono from 'hono';
+export * from './factory';
+export * from './types';

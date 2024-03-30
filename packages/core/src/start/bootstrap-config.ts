@@ -1,8 +1,9 @@
 import { ConfigService } from '@config/config';
-import { Env, IocContainer } from 'src';
-import type { IBootstrapConfig } from '../interfaces';
+import { Environment, IocContainer } from 'src';
+import type { IBootstrapConfig, IHttpServe } from '../interfaces';
 
 //TODO: add app exception handler
+// TODO: refacto this file later (used in this state for developpement purpose)
 async function loadModule(importedModule: any) {
   try {
     const module = await importedModule();
@@ -11,12 +12,10 @@ async function loadModule(importedModule: any) {
     throw new Error(`Error loading module ${importedModule}: ${error?.message}`);
   }
 }
-// TODO: refacto this file later
-export async function defineConfigAndBootstrapApp(config: (injectedConfig: ConfigService) => IBootstrapConfig): Promise<{
-  port: number;
-  fetch: any;
-} | void> {
-  const env = IocContainer.container.get<Env>(Env);
+
+export async function defineConfigAndBootstrapApp(config: (injectedConfig: ConfigService) => IBootstrapConfig): Promise<IHttpServe | void> {
+  let returnedConfig: IHttpServe | void = undefined;
+  const env = IocContainer.container.get<Environment>(Environment);
   const configService = IocContainer.container.get<ConfigService>(ConfigService);
   const loadedConfig = config(configService);
   const iocBindingLoader = await loadModule(loadedConfig.loaders.ioc);
@@ -24,14 +23,20 @@ export async function defineConfigAndBootstrapApp(config: (injectedConfig: Confi
   env.process(envLoader);
   iocBindingLoader(IocContainer.container);
 
+  if (loadedConfig.adapters?.server) {
+    const server = await loadedConfig.adapters?.server.provider();
+    const exceptionHandler = await loadModule(loadedConfig.adapters?.server.exceptions);
+    const { provider, exceptions, ...httpConfig } = loadedConfig.adapters.server;
+
+    server.HttpFactory.bindContainers(IocContainer.container);
+    server.HttpFactory.exceptionHandler(exceptionHandler);
+    returnedConfig = server.HttpFactory.listen(httpConfig);
+  }
+
   if (loadedConfig.entrypoint) {
     const entrypoint = await loadModule(loadedConfig.entrypoint);
     entrypoint();
   }
 
-  if (loadedConfig.adapters?.server) {
-    const server = await loadedConfig.adapters?.server.provider();
-    //TODO: voir pour ne pas utiliser le dénominateur HonoFactory
-    return server.HonoFactory.listen(loadedConfig.adapters?.server.port, IocContainer.container);
-  }
+  return returnedConfig;
 }
