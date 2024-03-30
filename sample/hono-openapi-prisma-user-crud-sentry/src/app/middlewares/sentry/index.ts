@@ -1,5 +1,5 @@
-import type { ConfigService, ENV_STATE_ENUM } from '@cosmosjs/core';
-import type { Server } from '@cosmosjs/hono-openapi';
+import type { ConfigService, ENV_STATE_ENUM } from '@cosmoosjs/core';
+import type { Server } from '@cosmoosjs/hono-openapi';
 import { sentry } from '@hono/sentry';
 
 export function setupSentry(server: Server, configService: ConfigService) {

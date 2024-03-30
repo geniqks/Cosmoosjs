@@ -1,4 +1,4 @@
-import { OpenapiFactory } from '@cosmosjs/hono-openapi';
+import { OpenapiFactory } from '@cosmoosjs/hono-openapi';
 import type { UserLoginInput } from './user.type';
 
 export const UserInputSchema = OpenapiFactory.generateSchema<UserLoginInput>({

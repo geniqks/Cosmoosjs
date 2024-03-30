@@ -6,8 +6,8 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "@cosmosjs/core": "workspace:*",
-    "@cosmosjs/hono-openapi": "workspace:*",
+    "@cosmoosjs/core": "workspace:*",
+    "@cosmoosjs/hono-openapi": "workspace:*",
     "@hono/sentry": "^1.0.0",
     "@prisma/client": "5.11.0",
     "dotenv": "^16.4.5",

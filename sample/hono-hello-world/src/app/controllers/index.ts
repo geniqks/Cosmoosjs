@@ -1,5 +1,5 @@
-import { Get } from '@cosmosjs/hono-openapi';
-import type { hono } from '@cosmosjs/hono-openapi';
+import { Get } from '@cosmoosjs/hono-openapi';
+import type { hono } from '@cosmoosjs/hono-openapi';
 import { injectable } from 'inversify';
 
 @injectable()

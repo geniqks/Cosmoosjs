@@ -1,7 +1,7 @@
 import Bun from 'bun';
 import type { LoginResponse, UserLoginInput, UserWithoutPassword } from './user.type';
 import type { Prisma, User } from '@prisma/client';
-import { ConfigService } from '@cosmosjs/core';
+import { ConfigService } from '@cosmoosjs/core';
 import { HTTPException } from 'hono/http-exception';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import { UserRepository } from './user.repository';

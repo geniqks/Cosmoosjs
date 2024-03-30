@@ -1,21 +1,21 @@
 {
-	"name": "hono-hello-world",
-	"module": "index.ts",
-	"type": "module",
-	"scripts": {
-		"dev": "bun run --hot src/index.ts"
-	},
-	"dependencies": {
-		"@cosmosjs/core": "workspace:*",
-		"@cosmosjs/hono-openapi": "workspace:*",
-		"dotenv": "^16.4.5",
-		"inversify": "^6.0.2",
-		"reflect-metadata": "^0.2.1"
-	},
-	"devDependencies": {
-		"@types/bun": "^1.0.8"
-	},
-	"peerDependencies": {
-		"typescript": "^5.4.2"
-	}
+  "name": "hono-hello-world",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "bun run --hot src/index.ts"
+  },
+  "dependencies": {
+    "@cosmoosjs/core": "workspace:*",
+    "@cosmoosjs/hono-openapi": "workspace:*",
+    "dotenv": "^16.4.5",
+    "inversify": "^6.0.2",
+    "reflect-metadata": "^0.2.1"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.0.8"
+  },
+  "peerDependencies": {
+    "typescript": "^5.4.2"
+  }
 }

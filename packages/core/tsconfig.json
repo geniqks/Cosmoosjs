@@ -4,6 +4,7 @@
     "target": "ES2022",
     "module": "ES2022",
     "moduleDetection": "force",
+    "declaration": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     // Bundler mode

@@ -1,5 +1,5 @@
-import { ConfigService, IocContainer } from '@cosmosjs/core';
-import { Server } from '@cosmosjs/hono-openapi';
+import { ConfigService, IocContainer } from '@cosmoosjs/core';
+import { Server } from '@cosmoosjs/hono-openapi';
 import { setupHttpSecurity } from './middlewares/security';
 import { setupSentry } from './middlewares/sentry';
 

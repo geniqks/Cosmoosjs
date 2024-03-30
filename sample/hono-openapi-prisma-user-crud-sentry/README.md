@@ -1,22 +1,13 @@
 # hono-hello-world
 
-To install dependencies:
-
-```bash
-bun install
-```
-
 To run:
 
 ```bash
-bun run index.ts
+docker compose up -d
+bun i
+# > setup .env file
+bunx prisma migrate dev
+bun dev
 ```
 
-- User Crud
-- Guards
-- Prisma
-- hono
-- swagger / openapi
-- sentry
 
-// TODO: don't forget to add a sample using entrypoint

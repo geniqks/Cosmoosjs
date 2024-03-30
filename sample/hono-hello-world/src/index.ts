@@ -1,6 +1,6 @@
 import { ControllerRoot } from '@app/controllers';
-import { IocContainer, LoggerService, defineConfigAndBootstrapApp } from '@cosmosjs/core';
-import type { ConfigService } from '@cosmosjs/core';
+import { IocContainer, LoggerService, defineConfigAndBootstrapApp } from '@cosmoosjs/core';
+import type { ConfigService } from '@cosmoosjs/core';
 import { serve } from 'bun';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -14,7 +14,7 @@ const boostrapApp = async () => {
     adapters: {
       server: {
         port: config.get<number>('PORT'),
-        provider: () => import('@cosmosjs/hono-openapi'),
+        provider: () => import('@cosmoosjs/hono-openapi'),
       },
     },
     loaders: {

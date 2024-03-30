@@ -1,7 +1,7 @@
 import type * as hono from 'hono';
 import type { Prisma } from '@prisma/client';
 import { AuthorizationSchema } from 'src/schemas/header.schema';
-import { Delete, Get, Guards, Post, Put, Server } from '@cosmosjs/hono-openapi';
+import { Delete, Get, Guards, Post, Put, Server } from '@cosmoosjs/hono-openapi';
 import { JwtMiddleware } from '@app/middlewares/jwt';
 import { UserInputSchema } from 'src/libs/user/user.schema';
 import { UserService } from 'src/libs/user/user.service';

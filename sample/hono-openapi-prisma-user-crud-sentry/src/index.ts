@@ -1,7 +1,7 @@
 import { ControllerRoot } from '@app/controllers';
-import { AppFactory, IocContainer, LoggerService } from '@cosmosjs/core';
-import type { ConfigService, IBootstrapConfig } from '@cosmosjs/core';
-import type { FactoryOASMetadatas } from '@cosmosjs/hono-openapi';
+import { AppFactory, IocContainer, LoggerService } from '@cosmoosjs/core';
+import type { ConfigService, IBootstrapConfig } from '@cosmoosjs/core';
+import type { FactoryOASMetadatas } from '@cosmoosjs/hono-openapi';
 import { serve } from 'bun';
 import dotenv from 'dotenv';
 dotenv.config();
@@ -35,7 +35,7 @@ const boostrapApp = async () => {
               },
             },
           },
-          provider: () => import('@cosmosjs/hono-openapi'),
+          provider: () => import('@cosmoosjs/hono-openapi'),
           exceptions: () => import('@exceptions/handler'),
         },
       },

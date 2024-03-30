@@ -1,4 +1,4 @@
-import { IocContainer } from '@cosmosjs/core';
+import { IocContainer } from '@cosmoosjs/core';
 import { Validator } from './validator';
 import { inject, injectable } from 'inversify';
 

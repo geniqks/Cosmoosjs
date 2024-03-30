@@ -1,4 +1,4 @@
-import type { LoggerService } from '@cosmosjs/core';
+import type { LoggerService } from '@cosmoosjs/core';
 import { HTTPException } from 'hono/http-exception';
 import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 import type * as hono from 'hono';

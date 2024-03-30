@@ -1,4 +1,4 @@
-import { ENV_STATE_ENUM, Environment } from "@cosmosjs/core";
+import { ENV_STATE_ENUM, Environment } from "@cosmoosjs/core";
 
 /**
  * This file is used to validate environment variables

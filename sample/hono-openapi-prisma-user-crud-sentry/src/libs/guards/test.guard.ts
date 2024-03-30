@@ -1,7 +1,7 @@
 import type { Context } from 'hono';
-import { GuardAbstract } from '@cosmosjs/hono-openapi';
+import { GuardAbstract } from '@cosmoosjs/hono-openapi';
 import { inject, injectable } from 'inversify';
-import { LoggerService } from '@cosmosjs/core';
+import { LoggerService } from '@cosmoosjs/core';
 
 @injectable()
 export class TestGuard extends GuardAbstract {

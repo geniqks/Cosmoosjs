@@ -1,4 +1,4 @@
-import { Get } from '@cosmosjs/hono-openapi';
+import { Get } from '@cosmoosjs/hono-openapi';
 import { inject, injectable } from 'inversify';
 import { UserController } from './user.controller';
 import type * as hono from 'hono';

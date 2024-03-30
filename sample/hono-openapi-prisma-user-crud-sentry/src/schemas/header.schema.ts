@@ -1,4 +1,4 @@
-import { OpenapiFactory } from "@cosmosjs/hono-openapi";
+import { OpenapiFactory } from "@cosmoosjs/hono-openapi";
 
 export const AuthorizationSchema = OpenapiFactory.generateSchema({
   params: [

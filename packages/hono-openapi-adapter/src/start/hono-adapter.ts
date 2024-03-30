@@ -1,4 +1,4 @@
-import { ConfigService, ENV_STATE_ENUM, HttpAdapter, IocContainer, LoggerService } from '@cosmosjs/core';
+import { ConfigService, ENV_STATE_ENUM, HttpAdapter, IocContainer, LoggerService } from '@cosmoosjs/core';
 import type { FactoryConfig } from '@customTypes/index';
 import { swaggerUI } from '@hono/swagger-ui';
 import type { Serve } from 'bun';

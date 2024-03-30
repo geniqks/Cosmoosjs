@@ -1,5 +1,5 @@
-import type { ConfigService } from '@cosmosjs/core';
-import type { Server } from '@cosmosjs/hono-openapi';
+import type { ConfigService } from '@cosmoosjs/core';
+import type { Server } from '@cosmoosjs/hono-openapi';
 import { cors } from 'hono/cors';
 import { csrf } from 'hono/csrf';
 
