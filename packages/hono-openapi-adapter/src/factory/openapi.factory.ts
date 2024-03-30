@@ -2,7 +2,31 @@ import { z } from '@hono/zod-openapi';
 import type { EnumLike, ZodObject } from 'zod';
 // Add rule when needed don't import all rule from zod
 type ZodRule = {
-  /** Need to match zod function : https://zod.dev/ */
+  /** 
+   * Need to match zod function : https://zod.dev/ 
+   * 
+   * Example
+   * ```ts
+   * {
+      required: false,
+      type: 'string',
+      name: 'email',
+      rules: [
+        {
+          functionName: 'email',
+        },
+        {
+          functionName: 'min',
+          functionParam: 3,
+        },
+        {
+          functionName: 'max',
+          functionParam: 8,
+        }
+      ],
+    }
+   * ```
+   */
   functionName: string;
   functionParam?: any;
 };
