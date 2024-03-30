@@ -9,7 +9,7 @@ export interface IBootstrapConfig<T = any> {
     server: {
       /** Port to be used */
       port: number;
-      /** */
+      /** You can pass metadata to handle them using metadata */
       metadata?: T;
       /** HTTP server to be used */
       provider: () => Promise<any>;
