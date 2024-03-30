@@ -1,5 +1,4 @@
 import { ConfigService } from '@config/config';
-import type { IFactoryBaseConfig } from '@customTypes/index';
 import { Environment, IocContainer } from 'src';
 import type { IBootstrapConfig } from '../interfaces';
 
@@ -34,9 +33,7 @@ export async function defineConfigAndBootstrapApp(config: (injectedConfig: Confi
   if (loadedConfig.adapters?.server) {
     const server = await loadedConfig.adapters?.server.provider();
     const exceptionHandler = await loadModule(loadedConfig.adapters?.server.exceptions);
-    const httpConfig: IFactoryBaseConfig = {
-      port: loadedConfig.adapters?.server.port,
-    };
+    const { provider, exceptions, ...httpConfig } = loadedConfig.adapters.server;
 
     server.HttpFactory.bindContainers(IocContainer.container);
     server.HttpFactory.exceptionHandler(exceptionHandler);

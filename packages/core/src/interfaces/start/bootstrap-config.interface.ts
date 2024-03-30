@@ -1,4 +1,4 @@
-export interface IBootstrapConfig {
+export interface IBootstrapConfig<T = any> {
   /**
    * Adapters let you choose the tools you'll use during application development
    */
@@ -9,6 +9,8 @@ export interface IBootstrapConfig {
     server: {
       /** Port to be used */
       port: number;
+      /** */
+      metadata?: T;
       /** HTTP server to be used */
       provider: () => Promise<any>;
       /** Exceptions handler */
