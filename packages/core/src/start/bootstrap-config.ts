@@ -1,14 +1,13 @@
 import { ConfigService } from '@config/config';
 import { loadModule } from '@helpers/module.helper';
-import type { Serve } from 'bun';
 import { Environment, IocContainer } from 'src';
-import type { IBootstrapConfig } from '../interfaces';
+import type { IBootstrapConfig, IHttpServe } from '../interfaces';
 
 class AppBootstrap {
   private config: IBootstrapConfig<any> = {} as IBootstrapConfig;
 
-  public async defineConfigAndBootstrapApp(config: (injectedConfig: ConfigService) => IBootstrapConfig): Promise<Serve | void> {
-    let returnedConfig: Serve | void = undefined;
+  public async defineConfigAndBootstrapApp(config: (injectedConfig: ConfigService) => IBootstrapConfig): Promise<IHttpServe | void> {
+    let returnedConfig: IHttpServe | void = undefined;
     const configService = IocContainer.container.get<ConfigService>(ConfigService);
     this.config = config(configService);
 
@@ -40,7 +39,7 @@ class AppBootstrap {
   /**
    *  Load http server
    */
-  private async loadHttp(): Promise<void | Serve> {
+  private async loadHttp(): Promise<void | IHttpServe> {
     if (this.config.adapters?.server) {
       const server = await this.config.adapters?.server.provider();
       server.HttpFactory.bindContainers(IocContainer.container);
