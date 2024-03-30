@@ -2,8 +2,8 @@
   "name": "@cosmoosjs/core",
   "description": "create backend applications quickly and easily with bun.sh",
   "version": "1.0.2",
-  "main": "./src/index.js",
-  "types": "./src/index.d.ts",
+  "main": "./src/index",
+  "types": "./src/index",
   "license": "MIT",
   "exports": {
     ".": "./src/index.ts"
