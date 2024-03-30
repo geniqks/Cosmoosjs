@@ -20,10 +20,11 @@
     "baseUrl": ".",
     "paths": {
       "@config/*": ["./src/config/*"],
+      "@customTypes/*": ["./src/types/*"],
+      "@helpers/*": ["./src/helpers/*"],
       "@interfaces/*": ["./src/interfaces/*"],
       "@ioc/*": ["./src/ioc/*"],
       "@services/*": ["./src/services/*"],
-      "@customTypes/*": ["./src/types/*"],
       "@tests/*": ["./src/tests/*"],
       "@utils/*": ["./src/utils/*"]
     },

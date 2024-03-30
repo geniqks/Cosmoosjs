@@ -16,10 +16,6 @@ export interface IBootstrapConfig<T = any> {
       /** Exceptions handler */
       exceptions?: () => Promise<any>;
     };
-    /**
-     * Orm to be used
-     */
-    orm?: () => Promise<any>;
   };
 
   /**
@@ -45,9 +41,4 @@ export interface IBootstrapConfig<T = any> {
    * The entry point to your application
    */
   entrypoint?: () => Promise<any>;
-}
-
-export interface IHttpServe {
-  port: number;
-  fetch: any;
 }

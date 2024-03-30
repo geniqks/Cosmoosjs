@@ -1,6 +1,7 @@
 import { ConfigService, ENV_STATE_ENUM, HttpAdapter, IocContainer, LoggerService } from '@cosmosjs/core';
 import type { FactoryConfig } from '@customTypes/index';
 import { swaggerUI } from '@hono/swagger-ui';
+import type { Serve } from 'bun';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import type { Container } from 'inversify';
 import { CONTAINER, SERVER, SERVER_TARGET } from 'src/constants/reflector.constant';
@@ -12,7 +13,7 @@ class HonoAdapter extends HttpAdapter {
     bindToContainers(container);
   }
 
-  public listen(config: FactoryConfig<string>) {
+  public listen(config: FactoryConfig<string>): Serve {
     const app = IocContainer.container.get(Server);
     const configService = IocContainer.container.get(ConfigService);
     Reflect.defineMetadata(SERVER, app, SERVER_TARGET);

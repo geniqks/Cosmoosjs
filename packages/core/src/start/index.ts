@@ -1,1 +1,1 @@
-export { defineConfigAndBootstrapApp } from './bootstrap-config';
+export { AppFactory } from './bootstrap-config';
