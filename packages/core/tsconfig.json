@@ -15,7 +15,6 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "outDir": "./src",
     "baseUrl": ".",
     "paths": {
       "@config/*": ["./src/config/*"],
@@ -29,5 +28,5 @@
     },
     "types": ["bun", "node", "reflect-metadata"]
   },
-  "include": ["src"]
+  "include": ["./src"]
 }
