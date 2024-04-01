@@ -8,7 +8,7 @@
     "lint": "bunx biome check ./packages",
     "lint:safe": "bunx biome check --apply ./packages",
     "lint:unsafe": "bunx biome check --apply-unsafe  ./packages",
-    "prepare": "husky"
+    "prepare": "bunx husky"
   },
   "engines": {
     "node": ">=20.11.0"
@@ -17,9 +17,7 @@
   "workspaces": ["packages/*"],
   "devDependencies": {
     "@biomejs/biome": "1.6.1",
+    "@changesets/cli": "^2.27.1",
     "husky": "^9.0.11"
-  },
-  "dependencies": {
-    "@changesets/cli": "^2.27.1"
   }
 }
