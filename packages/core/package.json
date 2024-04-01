@@ -1,12 +1,15 @@
 {
   "name": "@cosmoosjs/core",
   "description": "create backend applications quickly and easily with bun.sh",
-  "version": "1.0.2",
-  "main": "./src/index",
-  "types": "./src/index",
+  "version": "1.0.9",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "license": "MIT",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    }
   },
   "repository": {
     "type": "git",
@@ -23,13 +26,13 @@
   },
   "dependencies": {
     "inversify": "^6.0.2",
+    "pino": "^8.19.0",
+    "pino-pretty": "^10.3.1",
     "reflect-metadata": "^0.2.1",
     "typescript": "^5.4.2",
-    "zod": "^3.22.4",
-    "pino": "^8.19.0"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/bun": "^1.0.8",
-    "pino-pretty": "^10.3.1"
+    "@types/bun": "^1.0.8"
   }
 }

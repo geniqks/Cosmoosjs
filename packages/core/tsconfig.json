@@ -2,13 +2,12 @@
   "compilerOptions": {
     "lib": ["ES2022"],
     "target": "ES2022",
-    "module": "ES2022",
+    "module": "NodeNext",
     "moduleDetection": "force",
     "declaration": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    // Bundler mode
-    "moduleResolution": "bundler",
+    "moduleResolution": "nodenext",
     // Best practices
     "strict": true,
     "skipLibCheck": true,

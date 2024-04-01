@@ -1,0 +1,10 @@
+# source
+**/*.ts
+*.ts
+.turbo/
+
+# definitions
+!**/*.d.ts
+!*.d.ts
+
+tsconfig.json

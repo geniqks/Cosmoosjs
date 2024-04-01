@@ -2,7 +2,8 @@
   "name": "@cosmoosjs/hono-openapi",
   "version": "1.0.1",
   "description": "Http server using hono zod for @cosmoosjs/core",
-  "main": "./dist/index.js",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "license": "MIT",
   "exports": {
     ".": "./src/index.ts"
@@ -20,7 +21,7 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "@cosmoosjs/core": "workspace:*",
+    "@cosmoosjs/core": "^1.0.2",
     "@hono/swagger-ui": "^0.2.1",
     "@hono/zod-openapi": "^0.9.8",
     "hono": "^4.1.1",
@@ -30,7 +31,6 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@types/bun": "^1.0.8",
-    "@hono/swagger-ui": "^0.2.1"
+    "@types/bun": "^1.0.8"
   }
 }

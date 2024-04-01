@@ -1,6 +1,6 @@
 import type { FactoryBaseConfig } from '@cosmoosjs/core';
+import type { GuardAbstract } from '@guards/guard.abstract';
 import type { OpenAPIObjectConfigure } from '@hono/zod-openapi';
-import type { GuardAbstract } from 'src';
 import type { RouteConfig } from './hono-zod.type';
 
 export type RouteParameters = RouteConfig;
