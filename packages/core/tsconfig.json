@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
-    "lib": [
-      "ES2022"
-    ],
+    "lib": ["ES2022"],
     "target": "ES2022",
     "module": "NodeNext",
     "declaration": true,
@@ -18,38 +16,16 @@
     "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@config/*": [
-        "./src/config/*"
-      ],
-      "@customTypes/*": [
-        "./src/types/*"
-      ],
-      "@helpers/*": [
-        "./src/helpers/*"
-      ],
-      "@interfaces/*": [
-        "./src/interfaces/*"
-      ],
-      "@ioc/*": [
-        "./src/ioc/*"
-      ],
-      "@services/*": [
-        "./src/services/*"
-      ],
-      "@tests/*": [
-        "./src/tests/*"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
-      ]
+      "@config/*": ["./src/config/*"],
+      "@customTypes/*": ["./src/types/*"],
+      "@helpers/*": ["./src/helpers/*"],
+      "@interfaces/*": ["./src/interfaces/*"],
+      "@ioc/*": ["./src/ioc/*"],
+      "@services/*": ["./src/services/*"],
+      "@tests/*": ["./src/tests/*"],
+      "@utils/*": ["./src/utils/*"]
     },
-    "types": [
-      "bun",
-      "node",
-      "reflect-metadata"
-    ]
+    "types": ["bun", "node", "reflect-metadata"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }
