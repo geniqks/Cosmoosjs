@@ -1,34 +1,55 @@
 {
   "compilerOptions": {
-    "lib": ["ES2022"],
+    "lib": [
+      "ES2022"
+    ],
     "target": "ES2022",
-    "module": "ES2022",
-    "moduleDetection": "force",
+    "module": "nodenext",
     "declaration": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     // Bundler mode
-    "moduleResolution": "Bundler",
+    "moduleResolution": "nodenext",
     // Best practices
     "strict": true,
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "outDir": "./dist",
     "baseUrl": ".",
-    "types": ["bun", "node", "reflect-metadata"],
+    "types": [
+      "bun",
+      "node",
+      "reflect-metadata"
+    ],
     "paths": {
-      "@guards/*": ["./src/guards/*"],
-      "@decorators/*": ["./src/decorators/*"],
-      "@enums/*": ["./src/enums/*"],
-      "@ioc/*": ["./src/ioc/*"],
-      "@middlewares/*": ["./src/middlewares/*"],
-      "@server/*": ["./src/server/*"],
-      "@start/*": ["./src/start/*"],
-      "@customTypes/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@guards/*": [
+        "./src/guards/*"
+      ],
+      "@decorators/*": [
+        "./src/decorators/*"
+      ],
+      "@enums/*": [
+        "./src/enums/*"
+      ],
+      "@ioc/*": [
+        "./src/ioc/*"
+      ],
+      "@middlewares/*": [
+        "./src/middlewares/*"
+      ],
+      "@server/*": [
+        "./src/server/*"
+      ],
+      "@start/*": [
+        "./src/start/*"
+      ],
+      "@customTypes/*": [
+        "./src/types/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ]
     }
-  },
-  "include": ["src"]
+  }
 }

@@ -7,7 +7,7 @@ export type RouteParameters = RouteConfig;
 export type GuardsType<T extends GuardAbstract = any> = new () => T;
 export type FactoryConfig<T extends string> = FactoryBaseConfig & FactoryOAS<T>;
 export type FactoryOAS<T extends string> = {
-  metadata: FactoryOASMetadatas<T>;
+  metadata?: FactoryOASMetadatas<T>;
 };
 export type FactoryOASMetadatas<T extends string = ''> = {
   /** default: false */

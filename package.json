@@ -17,6 +17,7 @@
   "devDependencies": {
     "@biomejs/biome": "1.6.1",
     "@changesets/cli": "^2.27.1",
-    "husky": "^9.0.11"
+    "husky": "^9.0.11",
+    "tsup": "^8.0.2"
   }
 }

@@ -1,31 +1,55 @@
 {
   "compilerOptions": {
-    "lib": ["ES2022"],
+    "lib": [
+      "ES2022"
+    ],
     "target": "ES2022",
     "module": "NodeNext",
-    "moduleDetection": "force",
     "declaration": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "moduleResolution": "nodenext",
+    "moduleResolution": "NodeNext",
     // Best practices
     "strict": true,
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "outDir": "./dist",
     "baseUrl": ".",
     "paths": {
-      "@config/*": ["./src/config/*"],
-      "@customTypes/*": ["./src/types/*"],
-      "@helpers/*": ["./src/helpers/*"],
-      "@interfaces/*": ["./src/interfaces/*"],
-      "@ioc/*": ["./src/ioc/*"],
-      "@services/*": ["./src/services/*"],
-      "@tests/*": ["./src/tests/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@config/*": [
+        "./src/config/*"
+      ],
+      "@customTypes/*": [
+        "./src/types/*"
+      ],
+      "@helpers/*": [
+        "./src/helpers/*"
+      ],
+      "@interfaces/*": [
+        "./src/interfaces/*"
+      ],
+      "@ioc/*": [
+        "./src/ioc/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@tests/*": [
+        "./src/tests/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ]
     },
-    "types": ["bun", "node", "reflect-metadata"]
+    "types": [
+      "bun",
+      "node",
+      "reflect-metadata"
+    ]
   },
-  "include": ["./src"]
+  "include": [
+    "src"
+  ]
 }
