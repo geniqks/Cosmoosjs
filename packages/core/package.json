@@ -1,7 +1,7 @@
 {
   "name": "@cosmoosjs/core",
   "description": "create backend applications quickly and easily with bun.sh",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
