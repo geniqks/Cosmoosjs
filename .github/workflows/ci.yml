@@ -39,5 +39,7 @@ jobs:
       - uses: oven-sh/setup-bun@v1
 
       - run: bun install
+      # Core need to be build before other packages because some need there types
+      - run: bun run build --filter=@cosmoosjs/core
       - run: bun run build
     needs: tests
