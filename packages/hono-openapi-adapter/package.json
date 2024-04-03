@@ -1,6 +1,6 @@
 {
   "name": "@cosmoosjs/hono-openapi",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "Http server using hono zod for @cosmoosjs/core",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -9,6 +9,7 @@
   "exports": {
     ".": "./dist/index.js"
   },
+  "files": ["dist"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ae-creator/CosmosJS.git#main"

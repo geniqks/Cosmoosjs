@@ -21,5 +21,4 @@ export default (container: Container) => {
   container.bind(UserController).toSelf().inRequestScope();
   container.bind(UserRepository).toSelf().inRequestScope();
   container.bind(UserService).toSelf().inRequestScope();
-
 };

@@ -4,7 +4,7 @@ import type { OpenAPIObjectConfigure } from '@hono/zod-openapi';
 import type { RouteConfig } from './hono-zod.type';
 
 export type RouteParameters = RouteConfig;
-export type GuardsType<T extends GuardAbstract = any> = new () => T;
+export type GuardsType<T extends GuardAbstract = any> = new (...args: any) => T;
 export type FactoryConfig<T extends string> = FactoryBaseConfig & FactoryOAS<T>;
 export type FactoryOAS<T extends string> = {
   metadata?: FactoryOASMetadatas<T>;

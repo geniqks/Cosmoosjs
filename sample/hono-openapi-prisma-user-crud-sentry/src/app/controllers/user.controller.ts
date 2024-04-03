@@ -1,9 +1,8 @@
 import type * as hono from 'hono';
 import type { Prisma } from '@prisma/client';
-import { AuthorizationSchema } from 'src/schemas/header.schema';
 import { Delete, Get, Guards, Post, Put, Server } from '@cosmoosjs/hono-openapi';
 import { JwtMiddleware } from '@app/middlewares/jwt';
-import { UserInputSchema } from 'src/libs/user/user.schema';
+import { UserInputSchema, UserLoginInputSchema } from 'src/libs/user/user.schema';
 import { UserService } from 'src/libs/user/user.service';
 import { inject, injectable } from 'inversify';
 import { StatusCodes } from 'http-status-codes';
@@ -16,9 +15,10 @@ export class UserController {
     @inject(UserService) private readonly userService: UserService,
     @inject(JwtMiddleware) private readonly jwtMiddleware: JwtMiddleware,
     @inject(Server) private readonly server: Server,
-  ) {}
+  ) { }
 
   public setup(): void {
+    // @ts-ignore
     this.server.hono.use('/user/me', this.jwtMiddleware.get());
     this.me();
     this.localLogin();
@@ -36,7 +36,7 @@ export class UserController {
       body: {
         content: {
           'application/json': {
-            schema: UserInputSchema,
+            schema: UserLoginInputSchema,
           },
         },
       },
@@ -55,10 +55,12 @@ export class UserController {
 
   @Get({
     path: '/user/me',
-    tags: ['Users'],
-    request: {
-      headers: AuthorizationSchema,
-    },
+    tags: ['User'],
+    security: [
+      {
+        Bearer: [],
+      },
+    ],
     responses: {},
   })
   private me(ctx?: hono.Context): unknown {
@@ -70,6 +72,7 @@ export class UserController {
 
   @Post({
     path: '/user',
+    tags: ['User'],
     request: {
       body: {
         content: {
@@ -92,6 +95,7 @@ export class UserController {
 
   @Get({
     path: '/user/{userId}',
+    tags: ['User'],
     responses: {},
   })
   private async get(ctx?: hono.Context): Promise<unknown> {
@@ -104,6 +108,7 @@ export class UserController {
 
   @Get({
     path: '/user',
+    tags: ['User'],
     responses: {},
   })
   private async getUsers(ctx?: hono.Context) {
@@ -115,6 +120,7 @@ export class UserController {
 
   @Put({
     path: '/user/{userId}',
+    tags: ['User'],
     request: {
       body: {
         content: {
@@ -137,6 +143,7 @@ export class UserController {
 
   @Delete({
     path: '/user/{userId}',
+    tags: ['User'],
     responses: {},
   })
   private async delete(ctx?: hono.Context) {
