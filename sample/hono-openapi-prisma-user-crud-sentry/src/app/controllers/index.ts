@@ -6,7 +6,7 @@ import { HTTPException } from 'hono/http-exception';
 
 @injectable()
 export class ControllerRoot {
-  constructor(@inject(UserController) private readonly userController: UserController) {}
+  constructor(@inject(UserController) private readonly userController: UserController) { }
 
   public setup(): void {
     this.userController.setup();
@@ -17,7 +17,7 @@ export class ControllerRoot {
     path: '/',
     responses: {},
   })
-  private helloWorld(ctx?: hono.Context): unknown {
+  private helloWorld(_ctx?: hono.Context): unknown {
     throw new HTTPException(500, {
       message: 'Hello my name is error',
     });

@@ -7,6 +7,7 @@ export function setupSentry(server: Server, configService: ConfigService) {
   const env = configService.get<ENV_STATE_ENUM>('ENV');
 
   if (sentryPrivate) {
+    // @ts-ignore
     server.hono.use(
       '*',
       sentry({

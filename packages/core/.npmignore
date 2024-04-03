@@ -1,7 +1,7 @@
 # source
 **/*.ts
 *.ts
-**/*.turbo
+.turbo/
 
 # definitions
 !**/*.d.ts

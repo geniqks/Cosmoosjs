@@ -1,13 +1,10 @@
 {
   "name": "hono-openapi-prisma-user-crud-sentry",
-  "module": "index.ts",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
-    "@cosmoosjs/core": "workspace:*",
-    "@cosmoosjs/hono-openapi": "workspace:*",
     "@hono/sentry": "^1.0.0",
     "@prisma/client": "5.11.0",
     "dotenv": "^16.4.5",
