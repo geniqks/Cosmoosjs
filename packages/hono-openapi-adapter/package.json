@@ -22,7 +22,7 @@
     "lint": "bunx biome lint ./src"
   },
   "dependencies": {
-    "@cosmoosjs/core": "^1.0.2",
+    "@cosmoosjs/core": "^1.0.11",
     "@hono/swagger-ui": "^0.2.1",
     "@hono/zod-openapi": "^0.9.8",
     "hono": "^4.1.1",
