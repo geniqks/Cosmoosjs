@@ -12,6 +12,13 @@ $ bunx prisma migrate dev
 $ bun dev
 ```
 
+> If you use the sample outside the workspace you will need to do the following :
+
+```bash
+$ bun i @cosmoosjs/core
+$ bun i @cosmoosjs/hono-openapi
+```
+
 Once the server started, go to http://localhost:${PORT}/swagger
 
 # Troubleshooting
