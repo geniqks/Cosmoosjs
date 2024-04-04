@@ -28,7 +28,7 @@ jobs:
       - uses: oven-sh/setup-bun@v1
 
       - run: bun install
-      - run: bun test --only
+      - run: cd ./packages && bun test --only
     needs: lint
         
   build:
