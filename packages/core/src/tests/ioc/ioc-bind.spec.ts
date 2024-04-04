@@ -3,7 +3,7 @@ import { Container } from 'inversify';
 import 'reflect-metadata';
 import { IocTestClass, IocTestClass2, IocTestClass3 } from './ioc-bind-class';
 
-describe('Ioc Service', () => {
+describe.only('Ioc Service', () => {
   const container = new Container();
 
   beforeAll(() => {

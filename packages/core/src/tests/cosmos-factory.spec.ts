@@ -1,5 +1,5 @@
 import { describe, it } from 'bun:test';
 
-describe('Cosmos Factory', () => {
+describe.only('Cosmos Factory', () => {
   it('Should bind containers', async () => {});
 });

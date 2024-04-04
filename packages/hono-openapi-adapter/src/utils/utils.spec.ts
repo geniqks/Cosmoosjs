@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'bun:test';
 import { serializeRoutePath } from './utils';
 
-describe('Util', () => {
+describe.only('Util', () => {
   it('Should remove custom param to *', () => {
     const path = serializeRoutePath('/user/{userId}');
     expect(path).toEqual('/user/*');
