@@ -7,6 +7,13 @@ CosmosJs was developed following a mutual desire among friends to create an in-h
 We don't presume to say we're a framework, we prefer to say we're an application bootstrapper.
 At the moment we only intend to support Bun
 
+# Packages
+
+| Package                                                                                                     |
+| ----------------------------------------------------------------------------------------------------------- |
+| [@cosmoosjs/core](https://github.com/ae-creator/CosmosJS/tree/v1.1.0/packages/core)                         |
+| [@cosmoosjs/hono-openapi](https://github.com/ae-creator/CosmosJS/tree/v1.1.0/packages/hono-openapi-adapter) |
+
 # Troubleshooting
 
 ## Package resolve not working
