@@ -3,6 +3,13 @@
 This packages is intented to be injected to **@cosmoosjs/core**.\
 It aims to inject an http server and create an api with a simplified integration of _Hono Zod OpenApi_
 
+- [Installation](#installation)
+- [Api](#api)
+  - [@Guards](#guards)
+  - [@Get,Post,Put,Patch,Delete](#http)
+- [Tests](#testing)
+  - [Example](#example)
+
 ## Installation
 
 ```bash
@@ -52,7 +59,9 @@ abstract class GuardAbstract {
 
 ---
 
-#### @Get,Post,Put,Patch,Delete
+#### Http
+
+##### @Get,Post,Put,Patch,Delete
 
 All decorators work in the same way and have the same declaration.
 
@@ -92,3 +101,60 @@ type RouteParameters = Omit<OperationObject, "responses"> & {
   };
 };
 ```
+
+## Testing
+
+```bash
+$ bun test
+```
+
+To test the codebase you need to emulate the process of bootstraping the application. At the moment you can use the helper given below setup them
+
+```ts
+/**
+ * Setup environnement for tests
+ */
+export function setupTestsHelper(container: Container) {
+  // Bind classes to container
+  hono_openapi.bindToContainers(container);
+  core.bindToContainers(container);
+  bindToContainers(container);
+  // Get app
+  const app = container.get(hono_openapi.Server);
+  // Set reflection for decorators
+  hono_openapi.defineReflection(app);
+  // Add custom error handler
+  hono_openapi.HttpFactory.exceptionHandler(httpExceptionsHandler, container);
+  // Setup routing
+  const controllerRoot = container.get(ControllerRoot);
+  controllerRoot.setup();
+}
+```
+
+### Example
+
+This example is from the sample [hono-openapi](https://github.com/ae-creator/CosmosJS/tree/main/sample/hono-openapi-prisma-user-crud-sentry)
+
+```ts
+import { describe, it, beforeAll, expect } from "bun:test";
+import { Container } from "inversify";
+import { setupTestsHelper } from "src/tests/helpers/setup.helper";
+import { Server } from "@cosmoosjs/hono-openapi";
+
+describe("User Controller", () => {
+  const container = new Container();
+
+  beforeAll(() => {
+    setupTestsHelper(container);
+  });
+
+  it("Should test /", async () => {
+    const server = container.get(Server);
+    const res = await server.hono.request("/");
+    expect(res.status).toEqual(500);
+    expect(await res.text()).toEqual("Hello my name is error");
+  });
+});
+```
+
+You can have more examples [here](https://github.com/honojs/middleware/blob/main/packages/zod-openapi/test/index.test.ts)
