@@ -1,27 +1,30 @@
 ## @cosmoosjs/core
 
+- [Environment](#environnement)
+- [Inversion of control](#ioc)
+- [Testing](https://github.com/ae-creator/CosmosJS/tree/main/packages/hono-openapi-adapter#testing)
+
+### Environnement
+
 #### Environment Variables
-
-Copy the provided template for environment variables:
-
-```powershell
-cp .env.template .env
-```
-
-Update the .env file with your specific configuration.
 
 #### Variable Validation
 
-When introducing new environment variables, validate them in `src/config/config.ts` using the [Zod](https://zod.dev/) library:
+When introducing new environment variables, validate them in you'r environnement file using the [Zod](https://zod.dev/) library:
+
+**Environment.validator** export the zod library
 
 ```ts
-// TODO add example
-const schema = z.object({
-  CUSTOM_VARIABLE: withDevDefault(z.string(), "Default value"),
-});
+export default {
+  DATABASE_URL: Environment.validator.string(),
+  ENV: Environment.validator.nativeEnum(ENV_STATE_ENUM),
+  JWT_TOKEN: Environment.validator.string(),
+  ORIGINS: Environment.validator.string(),
+  PORT: Environment.validator.string().transform(Number),
+  SALT_ROUND: Environment.validator.string(),
+  SENTRY_DSN: Environment.validator.string(),
+};
 ```
-
-This step ensures that all variables adhere to a defined schema, enhancing the reliability of your application.
 
 ## IOC
 
