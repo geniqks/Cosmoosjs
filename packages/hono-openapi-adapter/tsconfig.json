@@ -21,6 +21,7 @@
       "@decorators/*": ["./src/decorators/*"],
       "@enums/*": ["./src/enums/*"],
       "@ioc/*": ["./src/ioc/*"],
+      "@helpers/*": ["./src/helpers/*"],
       "@middlewares/*": ["./src/middlewares/*"],
       "@server/*": ["./src/server/*"],
       "@start/*": ["./src/start/*"],

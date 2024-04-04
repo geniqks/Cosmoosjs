@@ -1,10 +1,10 @@
 import { ConfigService, ENV_STATE_ENUM, HttpAdapter, IocContainer, LoggerService } from '@cosmoosjs/core';
 import type { FactoryConfig } from '@customTypes/index';
+import { defineReflection } from '@helpers/relfection.helper';
 import { swaggerUI } from '@hono/swagger-ui';
 import type { Serve } from 'bun';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import type { Container } from 'inversify';
-import { CONTAINER, SERVER, SERVER_TARGET } from 'src/constants/reflector.constant';
 import { bindToContainers } from '../ioc';
 import { Server } from '../server';
 
@@ -16,9 +16,7 @@ class HonoAdapter extends HttpAdapter {
   public listen(config: FactoryConfig<string>): Serve {
     const app = IocContainer.container.get(Server);
     const configService = IocContainer.container.get(ConfigService);
-    Reflect.defineMetadata(SERVER, app, SERVER_TARGET);
-    Reflect.defineMetadata(CONTAINER, IocContainer.container, SERVER_TARGET);
-
+    defineReflection(app);
     const oasUrl = config.metadata?.openapi?.url ?? '/doc';
     const swaggerUrl = config.metadata?.swaggerUrl ?? '/swagger';
 
@@ -42,9 +40,10 @@ class HonoAdapter extends HttpAdapter {
   }
 
   /** Error Handling */
-  public exceptionHandler(handler: Function) {
-    const app = IocContainer.container.get(Server);
-    const logger = IocContainer.container.get(LoggerService);
+  public exceptionHandler(handler: Function, linkedContainer?: Container) {
+    const container = linkedContainer ?? IocContainer.container;
+    const app = container.get(Server);
+    const logger = container.get(LoggerService);
     if (handler) {
       app.hono.onError((err, ctx) => {
         return handler(err, ctx, logger);
