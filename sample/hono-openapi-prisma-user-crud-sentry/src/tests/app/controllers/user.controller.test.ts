@@ -1,4 +1,4 @@
-import { describe, it, beforeAll } from 'bun:test';
+import { describe, it, beforeAll, expect } from 'bun:test';
 import { Container } from 'inversify';
 import { setupTestsHelper } from 'src/tests/helpers/setup.helper';
 import { Server } from '@cosmoosjs/hono-openapi';
@@ -12,8 +12,8 @@ describe('User Controller', () => {
 
   it('Should test /', async () => {
     const server = container.get(Server);
-    // const res = await server.hono.request('/');
-    // expect(res.status).toEqual(500);
-    // expect(await res.text()).toEqual('Hello my name is error');
+    const res = await server.hono.request('/');
+    expect(res.status).toEqual(500);
+    expect(await res.text()).toEqual('Hello my name is error');
   });
 });
