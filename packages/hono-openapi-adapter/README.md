@@ -108,7 +108,7 @@ type RouteParameters = Omit<OperationObject, "responses"> & {
 $ bun test
 ```
 
-To test the codebase you need to emulate the process of bootstraping the application. At the moment you can use the helper given below setup them
+To test the codebase you need to emulate the process of bootstraping the application. At the moment you can use the helper given below
 
 ```ts
 /**
@@ -130,6 +130,7 @@ export function setupTestsHelper(container: Container) {
   controllerRoot.setup();
 }
 ```
+The helper full declaration is [here](https://github.com/ae-creator/CosmosJS/blob/main/sample/hono-openapi-prisma-user-crud-sentry/src/tests/helpers/setup.helper.ts)
 
 ### Example
 
