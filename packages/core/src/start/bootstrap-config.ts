@@ -8,7 +8,7 @@ class AppBootstrap {
 
   public async defineConfigAndBootstrapApp(config: (injectedConfig: ConfigService) => IBootstrapConfig): Promise<IHttpServe | void> {
     let returnedConfig: IHttpServe | void = undefined;
-    const configService = IocContainer.container.get<ConfigService>(ConfigService);
+    const configService = IocContainer.container.get(ConfigService);
     this.config = config(configService);
 
     this.processEnv();
@@ -31,7 +31,7 @@ class AppBootstrap {
    * Process env variables
    */
   private async processEnv(): Promise<void> {
-    const env = IocContainer.container.get<Environment>(Environment);
+    const env = IocContainer.container.get(Environment);
     const envLoader = await loadModule(this.config.loaders.env);
     env.process(envLoader);
   }
@@ -59,7 +59,7 @@ class AppBootstrap {
   private async loadEntrypoint(): Promise<void> {
     if (this.config.entrypoint) {
       const entrypoint = await loadModule(this.config.entrypoint);
-      entrypoint();
+      await entrypoint();
     }
   }
 }

@@ -33,7 +33,7 @@ for JavaScript & Node.js apps powered by TypeScript.
 
 ### Binding
 
-There are several ways to inject classes, in the application we use service <strong>identifier binding</strong> and <strong>name binding</strong>.
+There are several ways to inject classes, in the application we use service <strong>identifier binding</strong>.
 
 #### Identifier binding
 

@@ -17,7 +17,7 @@ function controllerHandler(options: RouteParameters, requestType: RequestMethod,
   const route = createRoute(finalRouteMetadata);
 
   if (guards && guards.length > 0) {
-    guardMiddleware(guards, requestType, finalRouteMetadata.path);
+    guardMiddleware(guards, requestType, route.getRoutingPath());
   }
 
   const openapi = server.hono.openapi(
