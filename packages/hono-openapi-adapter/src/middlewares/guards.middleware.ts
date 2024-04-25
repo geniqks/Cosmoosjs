@@ -3,7 +3,6 @@ import { SERVER, SERVER_TARGET } from 'src/constants/reflector.constant';
 import { guardHandler } from 'src/decorators';
 import { RequestMethod } from 'src/enums/request-method';
 import type { Server } from 'src/server';
-import { serializeRoutePath } from 'src/utils/utils';
 
 /**
  * Set middleware for path and method
@@ -12,7 +11,7 @@ export function guardMiddleware(guards: GuardsType[], requestType: RequestMethod
   if (guards && guards.length > 0) {
     const middlewareDefinition = getMiddlewareByDefinition(requestType);
     if (middlewareDefinition) {
-      middlewareDefinition(serializeRoutePath(path), async (ctx, next) => {
+      middlewareDefinition(path, async (ctx, next) => {
         guardHandler(guards, ctx);
         await next();
       });
