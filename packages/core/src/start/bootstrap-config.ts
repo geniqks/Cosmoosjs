@@ -3,17 +3,16 @@ import { loadModule } from '@helpers/module.helper';
 import { Environment, IocContainer } from 'src';
 import type { IBootstrapConfig, IHttpServe } from '../interfaces';
 
-class AppBootstrap {
-  private config: IBootstrapConfig<any> = {} as IBootstrapConfig;
+class AppBootstrap<T> {
+  private config: IBootstrapConfig<T> | undefined;
 
-  public async defineConfigAndBootstrapApp(config: (injectedConfig: ConfigService) => IBootstrapConfig): Promise<IHttpServe | void> {
-    let returnedConfig: IHttpServe | void = undefined;
+  public async defineConfigAndBootstrapApp(config: (injectedConfig: ConfigService) => IBootstrapConfig<T>): Promise<IHttpServe | void> {
     const configService = IocContainer.container.get(ConfigService);
     this.config = config(configService);
 
     this.processEnv();
     await this.bindApp();
-    returnedConfig = await this.loadHttp();
+    const returnedConfig = await this.loadHttp();
     await this.loadEntrypoint();
 
     return returnedConfig;
@@ -23,6 +22,7 @@ class AppBootstrap {
    * Bind all object to inversify
    */
   private async bindApp(): Promise<void> {
+    if (!this.config?.loaders?.ioc) return;
     const iocBindingLoader = await loadModule(this.config.loaders.ioc);
     iocBindingLoader(IocContainer.container);
   }
@@ -31,6 +31,7 @@ class AppBootstrap {
    * Process env variables
    */
   private async processEnv(): Promise<void> {
+    if (!this.config?.loaders?.env) return;
     const env = IocContainer.container.get(Environment);
     const envLoader = await loadModule(this.config.loaders.env);
     env.process(envLoader);
@@ -40,15 +41,15 @@ class AppBootstrap {
    *  Load http server
    */
   private async loadHttp(): Promise<void | IHttpServe> {
-    if (this.config.adapters?.server) {
-      const server = await this.config.adapters?.server.provider();
+    if (this.config?.adapters?.server) {
+      const { provider, exceptions, ...httpConfig } = this.config.adapters.server;
+      const server = await provider();
       server.HttpFactory.bindContainers(IocContainer.container);
 
-      if (this.config.adapters?.server.exceptions) {
-        const exceptionHandler = await loadModule(this.config.adapters?.server.exceptions);
+      if (exceptions) {
+        const exceptionHandler = await loadModule(exceptions);
         server.HttpFactory.exceptionHandler(exceptionHandler);
       }
-      const { provider, exceptions, ...httpConfig } = this.config.adapters.server;
       return server.HttpFactory.listen(httpConfig);
     }
   }
@@ -57,11 +58,11 @@ class AppBootstrap {
    * Load and run entrypoint
    */
   private async loadEntrypoint(): Promise<void> {
-    if (this.config.entrypoint) {
+    if (this.config?.entrypoint) {
       const entrypoint = await loadModule(this.config.entrypoint);
       await entrypoint();
     }
   }
 }
 
-export const AppFactory = new AppBootstrap();
+export const AppFactory = <T>() => new AppBootstrap<T>();

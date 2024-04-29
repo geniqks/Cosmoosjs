@@ -1,6 +1,6 @@
 import { ConfigService, ENV_STATE_ENUM, HttpAdapter, IocContainer, LoggerService } from '@cosmoosjs/core';
 import type { FactoryConfig } from '@customTypes/index';
-import { defineReflection } from '@helpers/relfection.helper';
+import { defineReflection } from '@helpers/reflection.helper';
 import { swaggerUI } from '@hono/swagger-ui';
 import type { Serve } from 'bun';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';

@@ -1,4 +1,6 @@
-export interface IBootstrapConfig<T = any> {
+import type { HttpAdapter } from 'src/adapters';
+
+export interface IBootstrapConfig<Metatadas> {
   /**
    * Adapters let you choose the tools you'll use during application development
    */
@@ -10,11 +12,13 @@ export interface IBootstrapConfig<T = any> {
       /** Port to be used */
       port: number;
       /** You can pass metadata to handle them using metadata */
-      metadata?: T;
+      metadata?: Metatadas;
       /** HTTP server to be used */
-      provider: () => Promise<any>;
+      provider: <T extends HttpAdapter>() => Promise<{
+        HttpFactory: T;
+      }>;
       /** Exceptions handler */
-      exceptions?: () => Promise<any>;
+      exceptions?: () => Promise<unknown>;
     };
   };
 
@@ -25,22 +29,22 @@ export interface IBootstrapConfig<T = any> {
     /**
      * Inject the env config to validate your environment
      */
-    env: () => Promise<any>;
+    env: () => Promise<unknown>;
     /**
      * Inject all classes into our ioc library "Inversify"
      */
-    ioc: () => Promise<any>;
+    ioc: () => Promise<unknown>;
   };
 
   /**
    *  You can inject custom providers to perform actions not native to the framework
    */
-  providers?: () => Promise<any>[];
+  providers?: () => Promise<unknown>[];
 
   /**
    * The entry point to your application
    */
-  entrypoint?: () => Promise<any>;
+  entrypoint?: () => Promise<unknown>;
 }
 
 export interface IHttpServe {
