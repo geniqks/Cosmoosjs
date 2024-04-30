@@ -1,1 +1,1 @@
-export { defineReflection } from './relfection.helper';
+export { defineReflection } from './reflection.helper';
