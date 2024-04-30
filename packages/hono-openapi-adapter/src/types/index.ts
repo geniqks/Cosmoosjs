@@ -9,7 +9,7 @@ export type FactoryConfig<T extends string> = FactoryBaseConfig & FactoryOAS<T>;
 export type FactoryOAS<T extends string> = {
   metadata?: FactoryOASMetadatas<T>;
 };
-export type FactoryOASMetadatas<T extends string> = {
+export type FactoryOASMetadatas<T extends string = ''> = {
   /** default: false */
   enableSwaggerInProd?: boolean;
   /** default: /swagger */
