@@ -32,6 +32,7 @@ class HonoAdapter extends HttpAdapter {
         );
       }
     }
+
     return {
       port: config.port,
       fetch: app.hono.fetch,

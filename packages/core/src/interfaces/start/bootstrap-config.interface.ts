@@ -14,9 +14,11 @@ export interface IBootstrapConfig<Metatadas> {
       /** You can pass metadata to handle them using metadata */
       metadata?: Metatadas;
       /** HTTP server to be used */
-      provider: <T extends HttpAdapter>() => Promise<{
-        HttpFactory: T;
-      }>;
+      provider: <T extends HttpAdapter>() => Promise<
+        any & {
+          HttpFactory: T;
+        }
+      >;
       /** Exceptions handler */
       exceptions?: () => Promise<unknown>;
     };
@@ -35,11 +37,6 @@ export interface IBootstrapConfig<Metatadas> {
      */
     ioc: () => Promise<unknown>;
   };
-
-  /**
-   *  You can inject custom providers to perform actions not native to the framework
-   */
-  providers?: () => Promise<unknown>[];
 
   /**
    * The entry point to your application
