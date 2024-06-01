@@ -1,6 +1,6 @@
 import { ControllerRoot } from '@app/controllers';
-import { AppFactory, IocContainer, LoggerService } from '@cosmoosjs/core';
 import type { ConfigService, IBootstrapConfig } from '@cosmoosjs/core';
+import { AppFactory, IocContainer, LoggerService } from '@cosmoosjs/core';
 import type { FactoryOASMetadatas } from '@cosmoosjs/hono-openapi';
 import { serve } from 'bun';
 import dotenv from 'dotenv';
@@ -11,7 +11,7 @@ dotenv.config();
  * and will return the http config in order to start the server.
  */
 const boostrapApp = async () => {
-  const config = await AppFactory.defineConfigAndBootstrapApp((config: ConfigService) => {
+  const config = await AppFactory().defineConfigAndBootstrapApp((config: ConfigService) => {
     const bootstrapedConfig: IBootstrapConfig<FactoryOASMetadatas> = {
       adapters: {
         server: {

@@ -1,6 +1,6 @@
 {
   "name": "@cosmoosjs/hono-openapi",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "Http server using hono zod for @cosmoosjs/core",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -9,7 +9,9 @@
   "exports": {
     ".": "./dist/index.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ae-creator/CosmosJS.git#main"
@@ -25,7 +27,7 @@
     "@cosmoosjs/core": "^1.0.12",
     "@hono/swagger-ui": "^0.2.2",
     "@hono/zod-openapi": "^0.13.0",
-    "hono": "^4.3.9",
+    "hono": "^4.4.2",
     "http-status-codes": "^2.3.0",
     "inversify": "^6.0.2",
     "reflect-metadata": "^0.2.1",
