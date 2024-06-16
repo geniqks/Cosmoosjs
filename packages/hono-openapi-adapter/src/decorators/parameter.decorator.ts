@@ -25,10 +25,11 @@ function controllerHandler(options: RouteParameters, requestType: RequestMethod,
     async (ctx) => {
       return target.call(thisArg, ctx);
     },
-    (result, c) => {
+    (result, ctx) => {
       if (!result.success) {
         console.error(result.error);
-        return c.json(
+        // @ts-ignore https://github.com/honojs/middleware/tree/main/packages/zod-openapi#handling-validation-errors
+        return ctx.json(
           {
             code: StatusCodes.BAD_REQUEST,
             message: result.error,

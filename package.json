@@ -13,7 +13,10 @@
   "engines": {
     "node": ">=20.11.0"
   },
-  "workspaces": ["packages/*"],
+  "packageManager": "bun@1.1.0",
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@biomejs/biome": "1.6.1",
     "@changesets/cli": "^2.27.1",
