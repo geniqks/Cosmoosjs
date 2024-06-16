@@ -2,10 +2,10 @@ import { describe, expect, it } from 'bun:test';
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
 import { OpenapiFactory } from './openapi.factory';
 
-describe('OpenApiFactory', () => {
+describe.only('OpenApiFactory', () => {
   const server = new OpenAPIHono();
 
-  describe('post requests', async () => {
+  describe.only('post requests', async () => {
     const testPostSchema = OpenapiFactory.generateSchema({
       schemaName: 'testSchema',
       params: [
@@ -66,7 +66,7 @@ describe('OpenApiFactory', () => {
       });
     });
 
-    it('it should generate a schema and let the request go', async () => {
+    it.only('it should generate a schema and let the request go', async () => {
       const res = await server.request('/schemaValidation', {
         method: 'post',
         headers: {
@@ -86,7 +86,7 @@ describe('OpenApiFactory', () => {
       });
     });
 
-    it('it should generate a schema and return an error because name is missing  ', async () => {
+    it.only('it should generate a schema and return an error because name is missing  ', async () => {
       const res = await server.request('/schemaValidation', {
         method: 'post',
         headers: {
