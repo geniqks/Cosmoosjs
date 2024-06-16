@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'bun:test';
-import { OpenapiFactory } from '@cosmoosjs/hono-openapi';
 import { OpenAPIHono, createRoute, z } from '@hono/zod-openapi';
+import { OpenapiFactory } from './openapi.factory';
 
 describe('OpenApiFactory', () => {
   const server = new OpenAPIHono();
