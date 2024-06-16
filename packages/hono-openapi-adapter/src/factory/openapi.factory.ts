@@ -1,6 +1,6 @@
 import { z } from '@hono/zod-openapi';
-import type { EnumLike, ZodObject } from 'zod';
-// Add rule when needed don't import all rule from zod
+import type { EnumLike, ZodAny, ZodBoolean, ZodNativeEnum, ZodNumber, ZodObject, ZodOptional, ZodString } from 'zod';
+
 type ZodRule = {
   /** 
    * Need to match zod function : https://zod.dev/ 
@@ -28,11 +28,16 @@ type ZodRule = {
    * ```
    */
   functionName: string;
-  functionParam?: any;
+  functionParam?: unknown;
 };
-
 type ZodTypeEnum = 'enum' | 'string' | 'boolean' | 'number' | 'any';
-
+type ZodDefinition<T extends EnumLike = EnumLike> =
+  | ZodBoolean
+  | ZodAny
+  | ZodNativeEnum<T>
+  | ZodNumber
+  | ZodString
+  | ZodOptional<ZodDefinition>;
 type OpenapiParams<T, K extends EnumLike = {}> = {
   name: T;
   required: boolean;
@@ -41,11 +46,11 @@ type OpenapiParams<T, K extends EnumLike = {}> = {
   enum?: K;
   rules?: ZodRule[];
 };
-
+type ZodDefinitionRecord = Record<string, ZodDefinition>;
 // Help generate zod schema for openApi with type safe checker
 export class OpenapiFactory {
-  static generateSchema<T, K = keyof T>(toGenerate: { schemaName?: string; params: OpenapiParams<K>[] }): ZodObject<any> {
-    const shape: Record<string, any> = {};
+  static generateSchema<T, K = keyof T>(toGenerate: { schemaName?: string; params: OpenapiParams<K>[] }): ZodObject<ZodDefinitionRecord> {
+    const shape: ZodDefinitionRecord = {};
     for (const property of toGenerate.params) {
       // Temporary variable to fix ts(2536)
       const propertyName = property.name as string;
@@ -82,7 +87,7 @@ export class OpenapiFactory {
     return z.object(shape);
   }
 
-  private static getSchemaType<T extends EnumLike>(type: ZodTypeEnum, customEnum?: T): unknown {
+  private static getSchemaType<T extends EnumLike>(type: ZodTypeEnum, customEnum?: T): ZodDefinition<T> {
     switch (type) {
       case 'boolean':
         return z.boolean();

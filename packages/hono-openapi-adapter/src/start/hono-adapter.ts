@@ -2,6 +2,7 @@ import { ConfigService, ENV_STATE_ENUM, HttpAdapter, type IHttpServe, IocContain
 import type { FactoryConfig } from '@customTypes/index';
 import { defineReflection } from '@helpers/reflection.helper';
 import { swaggerUI } from '@hono/swagger-ui';
+import type { Context } from 'hono';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 import type { Container } from 'inversify';
 import { bindToContainers } from '../ioc';
@@ -40,7 +41,10 @@ class HonoAdapter extends HttpAdapter {
   }
 
   /** Error Handling */
-  public exceptionHandler(handler: Function, linkedContainer?: Container) {
+  public exceptionHandler(
+    handler: (err: Error, ctx: Context, logger: LoggerService) => Response | Promise<Response>,
+    linkedContainer?: Container,
+  ) {
     const container = linkedContainer ?? IocContainer.container;
     const app = container.get(Server);
     const logger = container.get(LoggerService);
