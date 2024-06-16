@@ -69,6 +69,9 @@ describe('OpenApiFactory', () => {
     it('it should generate a schema and let the request go', async () => {
       const res = await server.request('/schemaValidation', {
         method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({
           email: 'salut@gmail.com',
           name: 'test',
@@ -86,6 +89,13 @@ describe('OpenApiFactory', () => {
     it('it should generate a schema and return an error because name is missing  ', async () => {
       const res = await server.request('/schemaValidation', {
         method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: 'salut@gmail.com',
+          password: '123AZN',
+        }),
       });
 
       const response = await res.json();
