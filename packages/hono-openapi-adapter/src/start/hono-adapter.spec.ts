@@ -15,30 +15,25 @@ describe.only('HonoAdapter', () => {
 
   beforeAll(() => {
     // Setup routes
-    function setErrorRoute(path: string) {
-      const route = createRoute({
-        method: 'get',
-        path,
-        responses: {
-          200: {
-            content: {
-              'application/json': {
-                schema: z.object({
-                  message: z.string(),
-                }),
-              },
+    const route = createRoute({
+      method: 'get',
+      path: '/',
+      responses: {
+        200: {
+          content: {
+            'application/json': {
+              schema: z.object({
+                message: z.string(),
+              }),
             },
-            description: 'ok',
           },
+          description: 'ok',
         },
-      });
-      server.hono.openapi(route, async (_ctx) => {
-        throw new Error();
-      });
-    }
-
-    setErrorRoute('/error');
-    setErrorRoute('/');
+      },
+    });
+    server.hono.openapi(route, async (_ctx) => {
+      throw new Error();
+    });
   });
 
   it.only('it should get the server', async () => {
@@ -98,7 +93,7 @@ describe.only('HonoAdapter', () => {
       return ctx.text('custom error', StatusCodes.INTERNAL_SERVER_ERROR);
     });
 
-    const res = await server.hono.request('/error', {
+    const res = await server.hono.request('/', {
       method: 'get',
       headers: {
         'Content-Type': 'application/text',
