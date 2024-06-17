@@ -233,7 +233,6 @@ describe.only('OpenApiFactory', () => {
 
     it.only('it should return an error because email is missing', async () => {
       const res = await server.request('/schemaGetValidation', requestFormatterHelper('get'));
-
       const response = await res.json();
       expect(res.status).toEqual(400);
       expect(response).toMatchObject({
@@ -243,7 +242,6 @@ describe.only('OpenApiFactory', () => {
 
     it.only('it should let the request go', async () => {
       const res = await server.request('/schemaGetValidation?email=hello@gmail.com', requestFormatterHelper('get'));
-
       const response = await res.json();
       expect(res.status).toEqual(200);
       expect(response).toEqual({
@@ -253,7 +251,6 @@ describe.only('OpenApiFactory', () => {
 
     it.only('it should return an error because email is not formatted correctly', async () => {
       const res = await server.request('/schemaGetValidation?email=hello', requestFormatterHelper('get'));
-
       const response = await res.json();
       expect(res.status).toEqual(400);
       expect(response).toMatchObject({
