@@ -13,7 +13,7 @@ class HonoAdapter extends HttpAdapter {
     bindToContainers(container);
   }
 
-  public listen(config: FactoryConfig<string>): IHttpServe {
+  public listen(config: FactoryConfig): IHttpServe {
     const app = IocContainer.container.get(Server);
     const configService = IocContainer.container.get(ConfigService);
     defineReflection(app);
