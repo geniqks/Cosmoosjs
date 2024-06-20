@@ -5,11 +5,11 @@ import type { RouteConfig } from './hono-zod.type';
 
 export type RouteParameters = RouteConfig;
 export type GuardsType<T extends GuardAbstract = any> = new (...args: any) => T;
-export type FactoryConfig<T extends string> = FactoryBaseConfig & FactoryOAS<T>;
-export type FactoryOAS<T extends string> = {
-  metadata?: FactoryOASMetadatas<T>;
+export type FactoryConfig = FactoryBaseConfig & FactoryOAS;
+export type FactoryOAS = {
+  metadata?: FactoryOASMetadatas;
 };
-export type FactoryOASMetadatas<T extends string = ''> = {
+export type FactoryOASMetadatas = {
   /** default: false */
   enableSwaggerInProd?: boolean;
   /** default: /swagger */
@@ -18,7 +18,7 @@ export type FactoryOASMetadatas<T extends string = ''> = {
     /** Url of OAP */
     url: string;
     /** OAP configuration */
-    config: OASType<T>;
+    config: OASType;
   };
 };
-type OASType<T extends string> = OpenAPIObjectConfigure<any, T>;
+type OASType = OpenAPIObjectConfigure<any, string>;

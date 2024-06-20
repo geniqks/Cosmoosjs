@@ -47,7 +47,7 @@ function controllerHandler(options: RouteParameters, requestType: RequestMethod,
  * To understand how this function work
  * @link https://stackoverflow.com/a/70910553/15431338
  */
-export function createFunctionParameters(type: RequestMethod) {
+function createFunctionParameters(type: RequestMethod) {
   return (routeParameters: RouteParameters) => {
     return (target: any, propertyKey: string, descriptor: PropertyDescriptor): void | TypedPropertyDescriptor<any> => {
       // Add path to reflection
